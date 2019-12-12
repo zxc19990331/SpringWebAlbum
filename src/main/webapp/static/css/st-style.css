@@ -1,0 +1,217 @@
+body{
+    font: 14px/1.5 "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif;
+    min-height: 1200px;
+}
+
+.gray-color{
+    color: #bbbbbb;
+}
+.theme-bg{
+    background: #009688;
+}
+
+.theme-bg-2{
+    background: #008699;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #eee;
+}
+
+.border-top {
+    border-top: 1px solid #eee;
+}
+
+.border-left {
+    border-left: 1px solid #eee;
+}
+
+.border-right {
+    border-right: 1px solid #eee;
+}
+
+.st-banner-ad-box{
+    padding: 20px 0;
+}
+
+.st-banner-ad{
+    width: 1400px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.album-box{
+    width: 1400px;
+    margin: 0 auto;
+}
+
+.album-info-box{
+    width: 1000px;
+    padding: 20px;
+}
+
+.album-info-avatar img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.album-author-box{
+    width: 400px;
+    padding: 20px;
+}
+
+.album-photo{
+    max-width: 1400px;
+    width: max-content;
+    text-align: center;
+    margin: 5px auto;
+}
+
+.album-photo img{
+    width: 100%;
+    height: 100%;
+    margin: 5px auto;
+}
+
+.st-banner{
+    width:100%;
+    height:max-content;
+    background:#009688;
+    font-size:60px;
+    color:white;
+    text-align:center
+}
+
+.st-header{
+    background: #009688;
+    height: 56px;
+    width: 100%;
+}
+
+.st-main{
+    width: 1400px;
+    margin: 0 auto;
+}
+
+.st-rightbar{
+    height: 56px;
+    position: absolute;
+    top:0;
+    right: 36px;
+}
+
+.st-white-font{
+    font-size: 16px;
+    color: white;
+}
+
+.bg-gray{
+    background: #F4F4F4;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.horizentol{
+    display:flex;
+    flex-direction:row;
+}
+
+.vertical{
+    display:flex;
+    flex-direction:column;
+}
+
+.right{
+    float: right;
+}
+
+.left{
+    float: left;
+}
+.card-box {
+    width: 260px;
+    max-width: 100%;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    margin: 0 10px 20px 10px;
+}
+
+.fill-box{
+    width: 100%;
+    height: 100%;
+}
+
+.card-info {
+    border-bottom: 1px solid #eee;
+    padding: 11px 16px 13px;
+    height: 75px;
+    position: relative;
+}
+
+.card-info-title {
+    margin-bottom: 1px;
+    position: relative;
+    height: 20px;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.card-info-type {
+    font-size: 12px;
+    color: #bbb;
+    margin-bottom: 17px;
+    height: 18px;
+}
+
+.card-image{
+    height: 195px;
+    width: 100%;
+}
+
+.album-card-box .card-item, .card-box .card-item {
+    height: 50px;
+    padding: 0 16px;
+    /* display: -webkit-box; */
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    position: relative;
+}
+
+.information-headimg-box {
+    width: 150px;
+    height: 150px;
+    border: 4px solid #ffffff;
+    background-color: #ffffff;
+    position: absolute;
+    left: 50%;
+    margin-left: -75px;
+    top: -65px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.home-information-box {
+    margin: 0 auto;
+    padding-bottom: 35px;
+    position: relative;
+}
+
+.home-information-wrap {
+    background: #ffffff;
+    line-height: 1;
+}
+
