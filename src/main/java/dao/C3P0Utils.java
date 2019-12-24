@@ -1,14 +1,12 @@
 package dao;
 
-import java.beans.PropertyVetoException;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javax.sql.DataSource;
-
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 
 public class C3P0Utils {

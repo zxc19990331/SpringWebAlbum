@@ -1,6 +1,5 @@
 package server;
 
-import constant.Constant;
 import dao.UserDAO;
 import entity.DataResult;
 import model.User;

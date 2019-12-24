@@ -2,7 +2,6 @@ package model;
 
 import constant.Constant;
 
-import java.util.List;
 import java.util.Map;
 
 public class User {

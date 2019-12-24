@@ -29,4 +29,18 @@ public class DataResult {
         this.data = data;
     }
 
+    public static DataResult fail(String msg){
+        DataResult dataResult = new DataResult();
+        dataResult.setMsg(msg);
+        dataResult.setStatus(-1);
+        return dataResult;
+    }
+
+    public static DataResult success(String msg,Object data){
+        DataResult dataResult = new DataResult();
+        dataResult.setMsg(msg);
+        dataResult.setData(data);
+        dataResult.setStatus(0);
+        return dataResult;
+    }
 }

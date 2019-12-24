@@ -10,22 +10,36 @@
     <mvc:default-servlet-handler/>
     <!-- 配置视图解析器 如何把handler 方法返回值解析为实际的物理视图 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name = "prefix" value="/WEB-INF/view/"/>
-        <property name = "suffix" value = ".jsp"/>
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!-- SpringMVC上传文件时,需配置MultipartResolver处理器 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 指定所上传文件的总大小不能超过80M......注意maxUploadSize属性的限制不是针对单个文件,而是所有文件的容量之和 -->
+        <property name="maxUploadSize" value="80000000"/>
     </bean>
 
+    <!-- SpringMVC在超出上传文件限制时,会抛出org.springframework.web.multipart.MaxUploadSizeExceededException -->
+    <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的,而且此时还没有进入到Controller方法中 -->
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <!-- 遇到MaxUploadSizeExceededException异常时,自动跳转到/WEB-INF/jsp/error_fileupload.jsp页面 -->
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error_fileupload</prop>
+            </props>
+        </property>
+    </bean>
 
     <mvc:resources location="static/image" mapping="/static/image/**"/>
     <mvc:resources location="static/css" mapping="/static/css/**"/>
     <mvc:resources location="static" mapping="/static/**"/>
 
 
-
     <!-- 配置文件上传 -->
     <!--<bean id="multipartResolver"-->
-          <!--class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
-        <!--&lt;!&ndash; 配置文件上传的最大体积 10M &ndash;&gt;-->
-        <!--<property name="maxUploadSize" value="10240000"/>-->
+    <!--class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+    <!--&lt;!&ndash; 配置文件上传的最大体积 10M &ndash;&gt;-->
+    <!--<property name="maxUploadSize" value="10240000"/>-->
     <!--</bean>-->
 
     <!-- 修改后的配置 -->

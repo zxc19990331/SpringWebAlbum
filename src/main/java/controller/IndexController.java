@@ -1,10 +1,8 @@
 package controller;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.UserDAO;
 import entity.DataResult;
-import model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import server.AlbumServer;
 import server.UserServer;
 
-import javax.jws.WebParam;
 import javax.servlet.http.HttpSession;
 
 @Controller

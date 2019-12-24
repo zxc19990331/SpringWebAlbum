@@ -70,7 +70,7 @@ body{
 
 .album-photo img{
     width: 100%;
-    height: 100%;
+    max-width: 800px;
     margin: 5px auto;
 }
 
@@ -90,7 +90,7 @@ body{
 }
 
 .st-main{
-    width: 1400px;
+    width: 1440px;
     margin: 0 auto;
 }
 
@@ -215,3 +215,8 @@ body{
     line-height: 1;
 }
 
+.upload-img{
+    width: 92px;
+    height: 92px;
+    margin: 0 10px 10px 0;
+}

@@ -58,7 +58,8 @@
                         <a href="/createAlbum">
                             <button type="button" class="layui-btn layui-btn-radius">创建相册</button>
                         </a>
-                        <button type="button" class="layui-btn layui-btn-radius">上传照片</button>
+                        <a href="/uploadPhoto?userId=${sessionScope.myInfo.id}"><button type="button" class="layui-btn layui-btn-radius">上传照片</button></a>
+
                     </div>
                 </c:if>
                 <div id="albums" style="margin-top: 20px">

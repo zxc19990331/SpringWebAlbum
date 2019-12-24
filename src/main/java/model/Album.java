@@ -1,11 +1,8 @@
 package model;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import constant.Constant;
 
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletionService;
 
 public class Album {
     private String id = "";

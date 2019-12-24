@@ -1,5 +1,6 @@
 package dao;
 
+import constant.Constant;
 import util.DateHelper;
 import util.ShortUUID;
 
@@ -20,6 +21,21 @@ public class AlbumDAO {
         return JDBCDAO.select(String.format("SELECT * FROM photo WHERE id IN (SELECT photo_id FROM store WHERE album_id = '%s')",albumId));
     }
 
+    public static List<Map<String, Object>> getPhotoInfoListByAlbumId(String albumId,String order){
+        String o = "";
+        switch (order){
+            case Constant.ORDER_DEFAULT:
+                break;
+            case Constant.ORDER_DATE_DESC:
+                o = "ORDER BY CONVERT(DATETIME,create_time) DESC";
+                break;
+            case Constant.ORDER_DATE_ASC:
+                o = "ORDER BY CONVERT(DATETIME,create_time) ASC";
+                break;
+        }
+        return JDBCDAO.select(String.format("SELECT * FROM photo WHERE id IN (SELECT photo_id FROM store WHERE album_id = '%s') %s",albumId,o));
+    }
+
     public static Map<String, Object> getAlbumInfoById(String albumId){
         return JDBCDAO.select(String.format("SELECT * FROM album WHERE id = '%s'",albumId)).get(0);
     }
@@ -35,6 +51,11 @@ public class AlbumDAO {
             return null;
         }
     }
+
+    public static boolean uploadPhotoToAlbum(String photoId,String albumId){
+        return JDBCDAO.insertOrDeleteOrUpdate(String.format("INSERT INTO store VALUES('%s','%s')",photoId,albumId));
+    }
+
 
     public static boolean isAlbumExist(String albumId){
         List<Map<String, Object>> res = JDBCDAO.select(String.format("SELECT * FROM album WHERE id = '%s'",albumId));

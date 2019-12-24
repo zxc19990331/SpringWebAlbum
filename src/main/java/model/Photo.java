@@ -2,7 +2,6 @@ package model;
 
 import constant.Constant;
 
-import java.util.Date;
 import java.util.Map;
 
 public class Photo {

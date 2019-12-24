@@ -28,4 +28,12 @@ public class UserHomeController {
         return "album_create";
     }
 
+    @RequestMapping("/uploadPhoto")
+    public String goToUpload(@RequestParam("userId")String userId,Model model){
+        List<Album> albumList = (List<Album>)AlbumServer.getAlbumInfoListByUserId(userId).getData();
+        model.addAttribute("albumList",albumList);
+        model.addAttribute("userId",userId);
+        return "photo_upload";
+    }
+
 }

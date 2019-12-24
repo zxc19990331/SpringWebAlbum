@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/layui.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/st-style.css" type="text/css"/>
     <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/layui/layui.all.js"></script>
+    <script src="${pageContext.request.contextPath}/static/layui/layui.all.js" charset="utf-8"></script>
     <script type="text/javascript">
 
     </script>
