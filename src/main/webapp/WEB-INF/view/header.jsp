@@ -29,7 +29,7 @@
         <dl class="layui-nav-child">
             <dd><a>权限:${sessionScope.myInfo.type}</a></dd>
             <dd><a href="">修改信息</a></dd>
-            <dd><a href="">退出</a></dd>
+            <dd id="logout"><a href="">退出</a></dd>
         </dl>
     </li>
 
@@ -46,6 +46,21 @@
         });
         element.render();
     });
+
+    $("#logout").click(function () {
+        $.ajax({
+            url:"http://localhost:8080/logout",
+            type:"get",
+            dataType:"json",
+            success:function () {
+                window.location.reload();
+            },
+            error:function () {
+                window.location.reload();
+            }
+        })
+    });
+
 </script>
 </body>
 </html>
