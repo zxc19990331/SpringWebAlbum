@@ -18,6 +18,6 @@ public class UserDAO {
     }
 
     public static void addNewUser(String id,String password,String name){
-        JDBCDAO.insertOrDeleteOrUpdate(String.format("INSERT INTO users VALUES('%s','%s','%s','%s')",id,name,password,"normal"));
+        JDBCDAO.insertOrDeleteOrUpdate(String.format("INSERT INTO users VALUES('%s','%s','%s','%s','%s')",id,name,password,"normal","user"));
     }
 }
