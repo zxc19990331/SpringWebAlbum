@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/layui.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/st-style.css" type="text/css"/>
     <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>

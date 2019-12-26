@@ -5,10 +5,11 @@
   Time: 15:41
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>相册列表</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/layui.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/st-style.css" type="text/css"/>
@@ -59,7 +60,7 @@
                     <a href="/album?albumId=${album.id}"><img class="fill-box" src="/getImage?url=${album.coverId}"></a>
                 </div>
                 <div class="card-info">
-                    <div class="card-info-title">${album.name}</div>
+                    <div class="card-info-title">${album.name}[${album.category}]</div>
                     <div class="card-info-type">${album.descp}</div>
                 </div>
                 <div class="card-item">

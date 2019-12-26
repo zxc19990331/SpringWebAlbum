@@ -20,8 +20,8 @@ public class AlbumController {
     @RequestMapping("/submitNewAlbum")
     @ResponseBody
     public DataResult submitNewAlbum(@RequestParam("title")String title,@RequestParam("desc")String desc,
-                                     @RequestParam("userId")String userId){
-        return AlbumServer.addNewAlbum(userId,title,desc);
+                                     @RequestParam("userId")String userId, @RequestParam("type")String category){
+        return AlbumServer.addNewAlbum(userId,title,desc,category);
     }
 
     @RequestMapping("/album")
@@ -34,6 +34,13 @@ public class AlbumController {
         return new ModelAndView("album_content");
     }
 
+    @RequestMapping("/editAlbum")
+    public String editAlbum(@RequestParam("albumId")String albumId,Model model){
+        Album album = (Album)AlbumServer.getAlbumInfoById(albumId).getData();
+        model.addAttribute("album",album);
+        return "album_edit";
+    }
+
     //返回json格式的数据
     @RequestMapping("/upload")
     @ResponseBody
@@ -41,6 +48,8 @@ public class AlbumController {
                          @RequestParam("albumId")String albumId) throws Exception{
         return AlbumServer.uploadPhoto(files,userId,albumId);
     }
+
+
 
 
 }

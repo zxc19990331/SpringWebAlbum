@@ -13,6 +13,7 @@ public class Album {
     private String descp = "";
     private String albumState = "";
     private int praiseCount = 0;
+    private String category = "";
 
     public Album(){
 
@@ -27,8 +28,16 @@ public class Album {
         setDescp((String)map.get(Constant.DESCP));
         setAlbumState((String)map.get(Constant.ALBUM_STATE));
         setPraiseCount((int)map.get(Constant.PRAISE_COUNT));
+        setCategory((String)map.get(Constant.CATEGORY));
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
     public String getId() {
         return id;
     }

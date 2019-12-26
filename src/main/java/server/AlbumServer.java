@@ -107,10 +107,10 @@ public class AlbumServer {
         return dataResult;
     }
 
-    public static DataResult addNewAlbum(String userId,String albumName,String albumDescp){
+    public static DataResult addNewAlbum(String userId,String albumName,String albumDescp,String category){
             DataResult dataResult = new DataResult();
             // return album id
-            String res = AlbumDAO.createNewAlbum(userId,albumName,albumDescp);
+            String res = AlbumDAO.createNewAlbum(userId,albumName,albumDescp,category);
             if(res!=null){
                 dataResult.setStatus(0);
                 dataResult.setMsg("add new album success");

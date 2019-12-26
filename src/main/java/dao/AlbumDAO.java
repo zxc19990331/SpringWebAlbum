@@ -40,11 +40,11 @@ public class AlbumDAO {
         return JDBCDAO.select(String.format("SELECT * FROM album WHERE id = '%s'",albumId)).get(0);
     }
 
-    public static String createNewAlbum(String userId,String albumName,String albumDescp){
+    public static String createNewAlbum(String userId,String albumName,String albumDescp,String category){
         String albumId = ShortUUID.generateShortUuid();
         String curDate = DateHelper.getCurrentDate();
-        boolean res = JDBCDAO.insertOrDeleteOrUpdate(String.format("INSERT INTO album VALUES('%s','%s','%s','%s','%s','%s','%s',%s)",
-                albumId,albumName,userId,curDate,"default.jpg",albumDescp,"normal","0"));
+        boolean res = JDBCDAO.insertOrDeleteOrUpdate(String.format("INSERT INTO album VALUES('%s','%s','%s','%s','%s','%s','%s',%s，'%s')",
+                albumId,albumName,userId,curDate,"default.jpg",albumDescp,"normal","0",category));
         if(res){
             return albumId;
         }else {

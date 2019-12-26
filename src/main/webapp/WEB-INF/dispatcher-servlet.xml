@@ -32,6 +32,7 @@
 
     <mvc:resources location="static/image" mapping="/static/image/**"/>
     <mvc:resources location="static/css" mapping="/static/css/**"/>
+    <mvc:resources location="static/layui/font" mapping="/static/layui/font/**"/>
     <mvc:resources location="static" mapping="/static/**"/>
 
 
@@ -64,5 +65,7 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+
+
 
 </beans>

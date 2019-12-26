@@ -6,6 +6,7 @@ public class Constant {
     public static final String USER_NAME = "name";
     public static final String PASSWORD = "password";
     public static final String USER_STATE = "user_state";
+    public static final String TYPE = "type";
 
     public static final String ALB_NAME = "album_name";
     public static final String ALB_ID = "id";
@@ -15,6 +16,7 @@ public class Constant {
     public static final String DESCP = "descp";
     public static final String ALBUM_STATE = "album_state";
     public static final String PRAISE_COUNT = "praise_count";
+    public static final String CATEGORY = "category";
 
     public static final String PHOTO_ID = "id";
     public static final String PHOTO_NAME = "name";

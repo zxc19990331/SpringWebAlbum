@@ -5,17 +5,18 @@
   Time: 15:30
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <head>
     <meta charset="UTF-8">
     <title>用户注册</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/layui.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/st-style.css" type="text/css"/>
-    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/layui/layui.all.js"></script>
+    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
+    <script src="${pageContext.request.contextPath}/static/layui/layui.all.js" charset="UTF-8"></script>
     <script type="text/javascript">
         $(function () {
             //给退出按钮绑定事件

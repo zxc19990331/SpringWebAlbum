@@ -14,7 +14,10 @@
     <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/layui/layui.all.js" charset="utf-8"></script>
     <script type="text/javascript">
-
+        $(function(){
+            // $("#jumpMenu").val(要选中的option的value值即可);
+            $("#type").val(${album.category});
+        });
     </script>
         </head>
 <body>
@@ -37,7 +40,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">相册名</label>
             <div class="layui-input-block">
-                <input id="title" type="text" name="title" required  lay-verify="required" placeholder="请输入相册名" autocomplete="off" class="layui-input">
+                <input id="title" type="text" name="title" value="${album.name}" required  lay-verify="required" placeholder="请输入相册名" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -56,22 +59,21 @@
         <div class="layui-form-item">
             <label class="layui-form-label">权限</label>
             <div class="layui-input-block">
-                <input type="radio" name="auth" value="公开" title="公开" checked>
-                <input type="radio" name="auth" value="私密" title="私密">
-                <input type="radio" name="auth" value="仅关注者可见" title="仅关注者可见">
+                <input type="radio" name="auth" value="normal" title="公开" checked>
+                <input type="radio" name="auth" value="private" title="私密">
             </div>
         </div>
 
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">相册描述</label>
             <div class="layui-input-block">
-                <textarea name="desc" placeholder="请输入描述" class="layui-textarea"></textarea>
+                <textarea name="desc" placeholder="请输入描述" class="layui-textarea">${album.descp}</textarea>
             </div>
         </div>
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                <button class="layui-btn" lay-submit lay-filter="formDemo">提交修改</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
