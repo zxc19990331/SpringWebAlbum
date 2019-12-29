@@ -28,7 +28,9 @@
         </a>
         <dl class="layui-nav-child">
             <dd><a>权限:${sessionScope.myInfo.type}</a></dd>
-            <dd><a href="">修改信息</a></dd>
+            <dd><a href="/me/albums">管理相册</a></dd>
+            <dd><a href="/me/photos">管理照片</a></dd>
+            <dd><a href="/me/info">个人信息</a></dd>
             <dd id="logout"><a href="">退出</a></dd>
         </dl>
     </li>

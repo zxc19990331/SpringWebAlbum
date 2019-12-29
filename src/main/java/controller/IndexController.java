@@ -82,5 +82,6 @@ public class IndexController {
     public void logout(Model model,HttpSession httpSession){
         httpSession.invalidate();
         model.addAttribute("isLogin",false);
+        model.addAttribute("myInfo",null);
     }
 }

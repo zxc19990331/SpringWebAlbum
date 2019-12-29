@@ -71,6 +71,8 @@ public class AlbumServer {
         return dataResult;
     }
 
+
+    //TODO 太乱了 要改
     public static DataResult getPhotoInfoListByAlbumId(String albumId,String order){
        DataResult dataResult = new DataResult();
        if(!checkAlbumExist(albumId)){
@@ -87,6 +89,19 @@ public class AlbumServer {
            dataResult.setData(photoList);
        }
        return dataResult;
+    }
+
+    public static DataResult getPhotoInfoListByAlbumId(String albumId,int page,int limit){
+        if(!checkAlbumExist(albumId)){
+            return DataResult.fail("no such album");
+        }else{
+            List<Map<String, Object>> maps = AlbumDAO.getPhotoInfoListByAlbumId(albumId,page,limit);
+            List<Photo> photoList = new ArrayList<>();
+            for (Map<String, Object> map : maps) {
+                photoList.add(new Photo(map));
+            }
+            return DataResult.success("get photolist success",photoList);
+        }
     }
 
     public static DataResult getAlbumInfoListByUserId(String userId){
@@ -107,6 +122,20 @@ public class AlbumServer {
         return dataResult;
     }
 
+    //有分页
+    public static DataResult getAlbumInfoListByUserId(String userId,int page,int limit){
+        if(!UserServer.checkUserExist(userId)){
+            return DataResult.fail("no such user");
+        }else {
+            List<Album> albumList = new ArrayList<>();
+            List<Map<String, Object>> maps = AlbumDAO.getAlbumInfoListByUserId(userId,page,limit);
+            for (Map<String, Object> map : maps) {
+                albumList.add(new Album(map));
+            }
+            return DataResult.success("get albumlist success",albumList);
+        }
+    }
+
     public static DataResult addNewAlbum(String userId,String albumName,String albumDescp,String category){
             DataResult dataResult = new DataResult();
             // return album id
@@ -122,6 +151,35 @@ public class AlbumServer {
             }
             return dataResult;
     }
+
+    //TODO:加入用户权限合法性验证
+    public static DataResult editAlbumBaseInfo(String userId,String albumId,String albumName,String albumDescp,String category){
+        boolean res = AlbumDAO.editAlbumBaseInfo(albumId,albumName,albumDescp,category);
+        if(res){
+            return DataResult.success("edit album success",(Album)getAlbumInfoById(albumId).getData());
+        }else {
+            return DataResult.fail("edit album fail");
+        }
+    }
+
+    public static DataResult delAlbum(String userId,String albumId){
+        boolean res = AlbumDAO.delAlbum(albumId);
+        if(res){
+            return DataResult.success("del album success",null);
+        }else{
+            return DataResult.fail("del album fail");
+        }
+    }
+
+    public static DataResult setCover(String albumId,String photoId){
+        boolean res = AlbumDAO.setCover(albumId,photoId);
+        if(res){
+            return DataResult.success("set cover success",null);
+        }else{
+            return DataResult.fail("set cover fail");
+        }
+    }
+
 
     public static boolean checkAlbumExist(String albumId){
         return AlbumDAO.isAlbumExist(albumId);

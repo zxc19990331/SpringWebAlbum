@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import server.AlbumServer;
 import server.UserServer;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -29,7 +30,9 @@ public class UserHomeController {
     }
 
     @RequestMapping("/uploadPhoto")
-    public String goToUpload(@RequestParam("userId")String userId,Model model){
+    public String goToUpload(Model model, HttpSession session){
+        User user = (User)session.getAttribute("myInfo");
+        String userId = user.getId();
         List<Album> albumList = (List<Album>)AlbumServer.getAlbumInfoListByUserId(userId).getData();
         model.addAttribute("albumList",albumList);
         model.addAttribute("userId",userId);

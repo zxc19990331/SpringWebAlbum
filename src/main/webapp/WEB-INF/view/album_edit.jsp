@@ -16,7 +16,8 @@
     <script type="text/javascript">
         $(function(){
             // $("#jumpMenu").val(要选中的option的value值即可);
-            $("#type").val(${album.category});
+            $("#type").val('${album.category}');
+            layui.form.render('select');
         });
     </script>
         </head>
@@ -88,25 +89,26 @@
             //监听提交
             form.on('submit(formDemo)', function(data){
                 var info = data.field;
-                info["userId"] = ${sessionScope.myInfo.id};
+                info["userId"] = '${sessionScope.myInfo.id}';
+                info["albumId"] = '${album.id}';
                 console.log(info);
                 //layer.msg(JSON.stringify(info));
                 $.ajax({
-                    url:"http://localhost:8080/submitNewAlbum",
+                    url:"http://localhost:8080/submitEditAlbum",
                     type:"post",
                     data:info,
                     dataType:"json",
                     success:function (res) {
                         if(res.status==0){
-                            layer.msg("创建成功!");
+                            layer.msg("编辑成功!");
                             //TODO:跳转到新相册的页面
                             window.location.href = "/album?albumId="+res.data.id;
                         }else {
-                            layer.msg("创建失败!");
+                            layer.msg("编辑失败!");
                         }
                     },
                     error:function () {
-                        layer.msg("创建相册遇到问题!");
+                        layer.msg("编辑相册信息遇到问题!");
                     }
                 });
 

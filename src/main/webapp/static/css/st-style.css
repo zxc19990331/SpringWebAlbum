@@ -191,6 +191,16 @@ body{
     position: relative;
 }
 
+
+.me-avatar{
+    width: 150px;
+    height: 150px;
+    border: 4px solid #ffffff;
+    background-color: #ffffff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 .information-headimg-box {
     width: 150px;
     height: 150px;
@@ -220,3 +230,63 @@ body{
     height: 92px;
     margin: 0 10px 10px 0;
 }
+
+.corner-img-div{
+    display: inline-block;
+    position: relative;
+}
+
+.corner-img-item{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: max-content;
+    height: max-content;
+    display: none;
+}
+
+.container-area {
+    margin: 20px auto 0;
+}
+
+.personal-card, .personal-menu  {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.personal-content{
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+    height: max-content;
+    min-height: 600px;
+    padding: 20px;
+    margin-left: 10px;
+}
+.content-center{
+    margin:0 auto;
+    margin-bottom: 5px;
+}
+
+.personal-menu a {
+    display: block;
+    color: #333;
+    height: 52px;
+    line-height: 52px;
+    padding: 0 30px;
+    position: relative;
+}
+
+.me-current{
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 3px;
+    height: 32px;
+    background: #009688;
+    vertical-align: middle;
+}
+
+

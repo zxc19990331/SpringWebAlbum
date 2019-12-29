@@ -3,6 +3,7 @@ package server;
 import dao.UserDAO;
 import entity.DataResult;
 import model.User;
+import util.DateHelper;
 
 public class UserServer {
     public static DataResult getUserInfoById(String id){
@@ -56,5 +57,14 @@ public class UserServer {
             dataResult.setData(user);
         }
         return dataResult;
+    }
+
+    public static DataResult editBaseInfo(String userId,String name,String desc){
+        boolean res = UserDAO.editBaseInfo(userId,name,desc);
+        if(res){
+            return DataResult.success("edit base info success",(User)UserServer.getUserInfoById(userId).getData());
+        }else{
+            return DataResult.fail("edit base info fail");
+        }
     }
 }
