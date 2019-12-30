@@ -108,6 +108,22 @@ public class AlbumController {
             dataResult.setMsg("没有登录");
             return dataResult;
         }
+    }
 
+    @RequestMapping("/delcomment")
+    @ResponseBody
+    public DataResult delComment(@RequestParam("CID")String cId, @RequestParam("UID")String uId,HttpSession session){
+        User user= (User) session.getAttribute("myInfo");
+        System.out.println("删除评论！！！！！" + uId + "***" + user.getId());
+        if(user!= null && user.getId().equals(uId)){
+            System.out.println("DelComment删除评论");
+            return CommentServer.delComment(cId);
+        }else{
+            System.out.println("删除无效");
+            DataResult dataResult = new DataResult();
+            dataResult.setStatus(2);
+            dataResult.setMsg("没有删除权限");
+            return dataResult;
+        }
     }
 }

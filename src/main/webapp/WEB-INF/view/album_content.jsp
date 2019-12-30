@@ -60,8 +60,35 @@
 
             $("#COMMENT1").click(function () {
                 window.location.href = "http://localhost:8080/";
-            })
+            });
         });
+
+        function clickDel(e) {
+            var commentId = $(e).attr("data-id");
+            var userName = $(e).attr("data-name");
+
+            layer.confirm('确定删除该评论吗?', {icon: 3, title:'提示'}, function(index){
+                $.ajax({
+                    url: "http://localhost:8080/delcomment",
+                    type: "post",
+                    data: {"CID": commentId,"UID":userName},
+                    dataType: "json",
+                    success: function (result) {
+                        //如果删除成功
+                        if (result.status == 0) {
+                            layer.msg('删除成功!', {icon: 6});
+                            window.location.reload();
+                        } else {
+                            window.location.reload();
+                        }
+                    },
+                    error: function () {
+                        alert("删除相册发生异常");
+                    }
+                });
+                layer.close(index);
+            });
+        }
     </script>
 </head>
 <body>
@@ -139,9 +166,13 @@
             <div style="float:left;">
                 <span class="comment_name">${Info.userId} </span>     <span>${Info.createTime}</span>
             </div>
-            <div class="del">
-                <a class="del_comment" data-id="1"> <i class="icon layui-icon" >    删除</i></a>
-            </div>
+
+            <c:if  test="${Info.userId ==sessionScope.myInfo.id}">
+                <div class="del" id="delCom" onclick = "clickDel(this)" data-id = '${Info.id}' data-name = '${Info.userId}'>
+                    <a class="del_comment" data-id="1"> <i id = "del" class="icon layui-icon" > 删除</i> </a>
+                </div>
+            </c:if>>
+
             <div class="comment_content" > 
                     ${Info.context}
             </div>

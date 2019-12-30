@@ -36,6 +36,11 @@ import java.util.Map;
             }
         }
 
+        public static boolean delComment(String commentId){
+            return JDBCDAO.insertOrDeleteOrUpdate(String.format("DELETE comment WHERE id = '%s'",commentId));
+        }
+
+
         public static boolean isCommentExist(String commentId){
             List<Map<String, Object>> res = JDBCDAO.select(String.format("SELECT * FROM album WHERE id = '%s'",commentId));
             return !(res.size()==0);
