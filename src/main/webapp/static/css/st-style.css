@@ -289,4 +289,135 @@ body{
     vertical-align: middle;
 }
 
+.show_reply_list {
+    margin-right:1em;
+    color: grey;
+}
+.comment_list {
+    background-color: #ffffff;
+    padding-top:5px;
+    width:1400px;
+    margin:0 auto;
+}
+.comment {
+    width:1400px;
+    margin-top:10px;
+}
+.comment_details {
+    float:right;
+}
+.comment_content {
+    clear: both;
+    margin: 5px 50px;
+    font-size: 16px;
+    padding-left: 22px;
+}
+.comment_add_or_last {
+
+    margin:0 auto;
+    clear: both;
+    width:600px;
+    height:50px;
+    background: #ffffff;
+    text-align: center;
+    font-size:20px;
+    line-height: 40px;   //行高（与div保持同高，垂直居中写法）
+margin-bottom: 40px;
+}
+.imgdiv{
+    width:40px;
+    height:40px;
+    float:left;
+
+}
+.imgcss {
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+}
+.comment_name {
+    margin-left:10px;
+    color:#3D9EEA;
+    font-size:16px;
+    font-weight: bolder;
+}
+.layui-icon {
+    font-size: 13px;
+    color: grey;
+    margin-right: 1em;
+}
+.del {
+    float:right;
+
+}
+.del_comment {
+    margin-right:20px;
+}
+
+
+
+.reply_list {
+    clear:both;
+    display: none;
+    width:1400px;
+
+    padding-right:15px;
+    margin-top:10px;
+    font-size:16px;
+
+}
+.reply {
+    clear:both;
+    width:1400px;
+    margin:4px auto;
+
+}
+.reply_name {
+    color:#3D9EEA;
+}
+.del_reply {
+    float:right;
+}
+.show_remain_reply {
+    width:600px;
+    height:40px;
+    text-align:center;font-size:18px;
+    background-color: #F0F0F0;
+    margin:0 auto;
+    line-height: 40px;
+    display:none;
+}
+
+.ADDCOM {
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 40px;
+}
+
+.ADDBottom{
+    padding-top: 20px;
+    padding-left: 1228px;
+}
+
+.ADDBottom_withoutId{
+    background:#eaeaea;
+    padding-bottom: 0px;
+    height: 90px;
+    border-radius: 5px;
+}
+
+.ADDCOM_withoutId{
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 40px;
+    height: 80px;
+}
+
+.WithoutID{
+    margin-left: 620px;
+    margin-top: 25px;
+}
 

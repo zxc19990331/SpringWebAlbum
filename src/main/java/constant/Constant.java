@@ -34,4 +34,11 @@ public class Constant {
     public static final String BAN_USR = "ban_user";
     public static final String DEBAN_USR = "deban_user";
 
+
+    public static final String COM_ID = "id";
+    public static final String COM_CONTEXT = "context";
+    public static final String COM_USERID = "user_id";
+    public static final String COM_FROMID = "from_id";
+
+
 }
