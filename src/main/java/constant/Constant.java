@@ -22,6 +22,13 @@ public class Constant {
     public static final String PHOTO_NAME = "name";
     public static final String URL = "url";
 
+    public static final String Message_ID="id";
+    public static final String Message_TOID="to_id";
+    public static final String Message_FROMID="from_id";
+    public static final String Message_CONTEXT="context";
+    public static final String Message_CREATE_TIME="create_time";
+    public static final String Message_EXTRA="extra";
+
     public static final String ORDER_DEFAULT = "order_default";
     public static final String ORDER_DATE = "order_date";
     public static final String ORDER_DATE_DESC = "order_default_desc";

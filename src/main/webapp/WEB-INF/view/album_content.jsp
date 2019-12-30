@@ -38,7 +38,9 @@
                 <c:if test="${sessionScope.myInfo.id != albumInfo.userId}">
                     <div style="margin-top:10px">
                         <button type="button" class="layui-btn">关注</button>
+                        <a href="/sendMessage?id=${albumInfo.userId}">
                         <button type="button" class="layui-btn">私信</button>
+                        </a>
                     </div>
                 </c:if>
             </div>

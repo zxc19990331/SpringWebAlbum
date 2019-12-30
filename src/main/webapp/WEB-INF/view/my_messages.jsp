@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 52491
@@ -28,8 +29,15 @@
                 <li>已发送私信</li>
             </ul>
             <div class="layui-tab-content" style="">
-                <div class="layui-tab-item layui-show">收到的私信</div>
-                <div class="layui-tab-item">发送的私信</div>
+                <div class="layui-tab-item layui-show">
+                    <c:forEach items="${reciveMessageList}" var="message">
+                    <div>${message.context}</div>
+                </c:forEach>
+                </div>
+                <div class="layui-tab-item">
+                    <c:forEach items="${sendMessageList}" var="message">
+                    <div>${message.context}</div>
+                </c:forEach></div>
                 </div>
 
             </div>

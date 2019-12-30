@@ -2,6 +2,7 @@ package controller;
 
 import entity.DataResult;
 import model.Album;
+import model.Message;
 import model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import server.AlbumServer;
+import server.MessageServer;
 import server.PhotoServer;
 import server.UserServer;
 
@@ -44,7 +46,11 @@ public class MeController {
     @RequestMapping("/messages")
     public String enterMyMessages(HttpSession session,Model model){
         User user = (User)session.getAttribute("myInfo");
+        List<Message> reciveMessageList=(List<Message>) MessageServer.getMessageBytoId(user.getId()).getData();
+        List<Message>sendMessageList=(List<Message>)MessageServer.getMessageByfromId(user.getId()).getData();
         model.addAttribute("myInfo",user);
+        model.addAttribute("reciveMessageList",reciveMessageList);
+        model.addAttribute("sendMessageList",sendMessageList);
         return "my_messages";
     }
 
