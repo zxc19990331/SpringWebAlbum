@@ -1,6 +1,7 @@
 package constant;
 
 public class Constant {
+    //至尊nb
     public static final String IMAGE_PATH = "E:\\study-软件工程\\web_album_rep";
     public static final String USER_ID = "id";
     public static final String USER_NAME = "name";
