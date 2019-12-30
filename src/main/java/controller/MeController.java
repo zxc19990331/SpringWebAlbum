@@ -41,6 +41,12 @@ public class MeController {
         return "my_photos";
     }
 
+    @RequestMapping("/messages")
+    public String enterMyMessages(HttpSession session,Model model){
+        User user = (User)session.getAttribute("myInfo");
+        model.addAttribute("myInfo",user);
+        return "my_messages";
+    }
 
     @RequestMapping("/editInfo")
     @ResponseBody

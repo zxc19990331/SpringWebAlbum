@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.security.x509.AVA;
 import util.ImageHelper;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,10 +17,15 @@ import java.io.OutputStream;
 public class ImageController {
 
     public static final String DEFAULT_PATH = ImageHelper.getFilePath("default.jpg");
+    public static final String DEAFULT_AVATAR = ImageHelper.getFilePath("avatar\\default.jpg");
+    public static final int AVATAR = 0;
+    public static final int IMG = 1;
 
-    public void handleRp(HttpServletResponse rp,String filePath) {
+    public void handleRp(HttpServletResponse rp,String filePath,int type) {
         File imageFile = new File(filePath);
-        if(!imageFile.exists()) imageFile = new File(DEFAULT_PATH);
+        if(!imageFile.exists()) {
+            imageFile = new File(type == IMG ?DEFAULT_PATH:DEAFULT_AVATAR);
+        }
         if (imageFile.exists()) {
             FileInputStream fis = null;
             OutputStream os = null;
@@ -49,14 +55,21 @@ public class ImageController {
     @ResponseBody
     public void getDefaultImage(HttpServletResponse rp) {
        String filePath = DEFAULT_PATH;
-       handleRp(rp,filePath);
+       handleRp(rp,filePath,IMG);
     }
 
     @RequestMapping(value = "/getImage")
     @ResponseBody
     public void getImage(@RequestParam("url")String url,HttpServletResponse rp){
         String filePath = ImageHelper.getFilePath(url);
-        handleRp(rp,filePath);
+        handleRp(rp,filePath, IMG);
         System.out.println(filePath);
+    }
+
+    @RequestMapping(value = "/getAvatar")
+    @ResponseBody
+    public void getAvatar(@RequestParam("id")String id,HttpServletResponse rp){
+        String filePath = ImageHelper.getAvatarPath(id);
+        handleRp(rp,filePath,AVATAR);
     }
 }

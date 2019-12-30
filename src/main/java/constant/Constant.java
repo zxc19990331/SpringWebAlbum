@@ -27,5 +27,10 @@ public class Constant {
     public static final String ORDER_DATE_DESC = "order_default_desc";
     public static final String ORDER_DATE_ASC = "order_default_asc";
 
+    public static final String BANNED = "banned";
+    public static final String NORMAL = "normal";
+
+    public static final String BAN_USR = "ban_user";
+    public static final String DEBAN_USR = "deban_user";
 
 }

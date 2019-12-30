@@ -1,11 +1,26 @@
 package server;
 
+import dao.OperationDAO;
 import dao.UserDAO;
 import entity.DataResult;
 import model.User;
 import util.DateHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class UserServer {
+
+    public static DataResult getUserList(int page,int limit){
+        List<Map<String, Object>> maps = UserDAO.getUserList(page,limit);
+        List<User> users = new ArrayList<>();
+        for(Map<String, Object> map : maps){
+            users.add(new User(map));
+        }
+        return DataResult.success("get userlist success",users);
+    }
+
     public static DataResult getUserInfoById(String id){
         DataResult dataResult = new DataResult();
         if(!checkUserExist(id)){
@@ -65,6 +80,16 @@ public class UserServer {
             return DataResult.success("edit base info success",(User)UserServer.getUserInfoById(userId).getData());
         }else{
             return DataResult.fail("edit base info fail");
+        }
+    }
+
+    public static DataResult setState(String userId,String state){
+        //TODO : add op
+        boolean res = UserDAO.setUserState(userId,state);
+        if(res){
+            return DataResult.success("set user state success",null);
+        }else{
+            return DataResult.fail("set user state fail");
         }
     }
 }

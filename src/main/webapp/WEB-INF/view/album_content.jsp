@@ -30,7 +30,7 @@
     </div>
     <div class="album-author-box horizentol border-left">
         <div class="album-info-avatar">
-            <a href="/user?id=${albumInfo.userId}"><img src="/getDefaultImage"></a>
+            <a href="/user?id=${albumInfo.userId}"><img src="/getAvatar?id=${userInfo.id}"></a>
         </div>
         <div class="vertical">
             <div style="font-size: 16px">上传者：${albumInfo.userId}</div>

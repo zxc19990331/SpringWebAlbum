@@ -28,4 +28,14 @@ public class UserDAO {
     public static boolean editBaseInfo(String userId,String name,String desc){
         return JDBCDAO.insertOrDeleteOrUpdate(String.format("UPDATE users SET name = '%s',descp = '%s' WHERE id = '%s'",name,desc,userId));
     }
+
+    public static List<Map<String, Object>> getUserList(int page,int limit){
+        int pre = (page - 1)*limit;
+        //沙雕sqlserver
+        return JDBCDAO.select(String.format("SELECT TOP %d * FROM users WHERE id NOT IN (SELECT TOP %d id FROM users ORDER BY create_time DESC) ORDER BY create_time DESC",limit,pre));
+    }
+
+    public static boolean setUserState(String userId,String state){
+        return JDBCDAO.insertOrDeleteOrUpdate(String.format("UPDATE users SET user_state = '%s'",state));
+    }
 }
