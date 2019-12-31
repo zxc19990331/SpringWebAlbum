@@ -3,6 +3,7 @@ package controller;
 import constant.Constant;
 import entity.DataResult;
 import model.Album;
+import model.Comment;
 import model.Photo;
 import model.User;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import server.AlbumServer;
+import server.CommentServer;
 import server.PhotoServer;
 
 import javax.servlet.http.HttpSession;
@@ -32,6 +34,14 @@ public class AlbumController {
 //        TODO:容错判断 排序功能
         List<Photo> photoList = (List<Photo>)AlbumServer.getPhotoInfoListByAlbumId(albumId, Constant.ORDER_DATE_ASC).getData();
         Album album = (Album) AlbumServer.getAlbumInfoById(albumId).getData();
+
+        try {
+            List<Comment> albumCommentList = (List<Comment>) CommentServer.getCommentInfoByAlbumId(albumId).getData();
+            model.addAttribute("commentInfo",albumCommentList);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         model.addAttribute("photoList",photoList);
         model.addAttribute("albumInfo",album);
         return new ModelAndView("album_content");
@@ -82,4 +92,38 @@ public class AlbumController {
         return AlbumServer.setCover(albumId,photoId);
     }
 
+
+    @RequestMapping("/addComment")
+    @ResponseBody
+    public DataResult addNewComment(@RequestParam("TEXT")String commentText, @RequestParam("AID")String aId,HttpSession session){
+        User user= (User) session.getAttribute("myInfo");
+        if(user!= null){
+            System.out.println("AddComment添加评论");
+            String uId = user.getId();
+            return CommentServer.addNewComment(uId,aId,commentText);
+        }else{
+            System.out.println("AddComment 未登录");
+            DataResult dataResult = new DataResult();
+            dataResult.setStatus(2);
+            dataResult.setMsg("没有登录");
+            return dataResult;
+        }
+    }
+
+    @RequestMapping("/delcomment")
+    @ResponseBody
+    public DataResult delComment(@RequestParam("CID")String cId, @RequestParam("UID")String uId,HttpSession session){
+        User user= (User) session.getAttribute("myInfo");
+        System.out.println("删除评论！！！！！" + uId + "***" + user.getId());
+        if(user!= null && user.getId().equals(uId)){
+            System.out.println("DelComment删除评论");
+            return CommentServer.delComment(cId);
+        }else{
+            System.out.println("删除无效");
+            DataResult dataResult = new DataResult();
+            dataResult.setStatus(2);
+            dataResult.setMsg("没有删除权限");
+            return dataResult;
+        }
+    }
 }
