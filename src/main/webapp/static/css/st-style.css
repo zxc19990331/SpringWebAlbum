@@ -302,6 +302,7 @@ body{
 .comment {
     width:1400px;
     margin-top:10px;
+    margin-left: 40px;
 }
 .comment_details {
     float:right;
@@ -321,12 +322,13 @@ body{
     background: #ffffff;
     text-align: center;
     font-size:20px;
-    line-height: 40px;   //行高（与div保持同高，垂直居中写法）
-margin-bottom: 40px;
+    /*行高（与div保持同高，垂直居中写法）*/
+    line-height: 40px;
+    margin-bottom: 40px;
 }
 .imgdiv{
-    width:40px;
-    height:40px;
+    width:50px;
+    height:50px;
     float:left;
 
 }
@@ -421,3 +423,28 @@ margin-bottom: 40px;
     margin-top: 25px;
 }
 
+.detail-font{
+    font-size: 14px;
+    color: #bbbbbb;
+}
+
+.msg-detail-content{
+    margin-bottom: 5px;
+}
+
+.msg-item{
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.msg-right-box{
+    margin-left:15px;
+}
+
+.button-font{
+    color: black;
+}
+
+.button-font:hover{
+    color:#009688;
+}

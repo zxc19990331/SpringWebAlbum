@@ -24,19 +24,40 @@
     <jsp:include page="my_left_bar.jsp"></jsp:include>
     <div class="personal-content">
         <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-            <ul class="layui-tab-title" style="margin-left: 45px">
+            <ul class="layui-tab-title" style="">
                 <li class="layui-this">已收到私信</li>
                 <li>已发送私信</li>
             </ul>
-            <div class="layui-tab-content" style="">
+            <div class="layui-tab-content">
                 <div class="layui-tab-item layui-show">
                     <c:forEach items="${reciveMessageList}" var="message">
-                    <div>${message.context}</div>
+                        <div class="horizentol msg-item">
+                            <div class="imgdiv">
+                                <img class="imgcss" src="/getAvatar?id=${message.fromId}"/>
+                            </div>
+                            <div class="vertical msg-right-box">
+                                <div  style="font-weight: bold">${message.fromId}</div>
+                                <div class="msg-detail-content">${message.context}</div>
+                                <div class="horizentol">
+                                    <div class="msg-detail-content detail-font">${message.createTime}</div>
+                                    <a href="/sendMessage?id=${message.fromId}" target="_blank"><div class="button-font" style="margin-left: 50px">回复</div></a>
+                                </div>
+                            </div>
+                        </div>
                 </c:forEach>
                 </div>
                 <div class="layui-tab-item">
                     <c:forEach items="${sendMessageList}" var="message">
-                    <div>${message.context}</div>
+                        <div class="horizentol msg-item">
+                            <div class="imgdiv">
+                                <img class="imgcss" src="/getAvatar?id=${message.toId}"/>
+                            </div>
+                            <div class="vertical msg-right-box">
+                                <div  style="font-weight: bold">发送给:${message.toId}</div>
+                                <div class="msg-detail-content">${message.context}</div>
+                                <div class="msg-detail-content detail-font">${message.createTime}</div>
+                            </div>
+                        </div>
                 </c:forEach></div>
                 </div>
 

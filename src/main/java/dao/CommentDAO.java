@@ -16,11 +16,11 @@ import java.util.Map;
             return JDBCDAO.select(String.format("SELECT * FROM comment WHERE user_id = '%s'",userId));
         }
 
-        public static List<Map<String, Object>> getcommentInfoListByAlbumId(String albumId){
+        public static List<Map<String, Object>> getCommentInfoListByAlbumId(String albumId){
             return JDBCDAO.select(String.format("SELECT * FROM comment WHERE from_id  = '%s'",albumId));
         }
 
-        public static Map<String, Object> getcommentInfoById(String Id){
+        public static Map<String, Object> getCommentInfoById(String Id){
             return JDBCDAO.select(String.format("SELECT * FROM comment WHERE id = '%s'",Id)).get(0);
         }
 
