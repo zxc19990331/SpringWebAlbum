@@ -68,4 +68,11 @@ public class Constant {
     public static final String FOLLOW_TOID = "to_id";
 
 
+    public static final String STATISTICS_ALBUM = "albumCount";
+    public static final String STATISTICS_COMMENT = "commentCount";
+    public static final String STATISTICS_FOLLOW = "followCount";
+    public static final String STATISTICS_FOLLOWED = "followedCount";
+    public static final String STATISTICS_PHOTO = "photoCount";
+
+
 }
