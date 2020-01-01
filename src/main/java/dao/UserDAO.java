@@ -36,6 +36,6 @@ public class UserDAO {
     }
 
     public static boolean setUserState(String userId,String state){
-        return JDBCDAO.insertOrDeleteOrUpdate(String.format("UPDATE users SET user_state = '%s'",state));
+        return JDBCDAO.insertOrDeleteOrUpdate(String.format("UPDATE users SET user_state = '%s' WHERE id = '%s'",state,userId));
     }
 }

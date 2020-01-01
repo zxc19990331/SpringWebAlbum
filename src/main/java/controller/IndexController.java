@@ -3,6 +3,7 @@ package controller;
 
 import dao.UserDAO;
 import entity.DataResult;
+import model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import server.AlbumServer;
 import server.UserServer;
 
+import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -80,8 +82,9 @@ public class IndexController {
     @RequestMapping("/logout")
     @ResponseBody
     public void logout(Model model,HttpSession httpSession){
+
         httpSession.invalidate();
         model.addAttribute("isLogin",false);
-        model.addAttribute("myInfo",null);
+        model.addAttribute("myInfo",new User());
     }
 }

@@ -26,8 +26,23 @@
 
     <script type="text/html" id="checkboxTpl">
         <%--layjpt--%>
-        <input type="checkbox" name="lock" value="{{d.user_state}}" title="封禁" lay-filter="lockDemo" {{ d.user_state == 'banned' ? 'checked' : '' }}>
+        {{# if(d.userState == 'banned') {}}
+        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs ">封禁</button>
+        {{# }else{ }}
+        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs">正常</button>
+        {{# } }}
+        <%--<input type="checkbox" name="lock" value="{{d.user_state}}" title="封禁" lay-filter="lockDemo" {{ d.user_state == 'banned' ? 'checked' : '' }}>--%>
     </script>
+
+    <script type="text/html" id="barDemo">
+        {{# if(d.userState == 'banned') {}}
+        <a class="layui-btn layui-btn-xs" lay-event="deban">解封</a>
+        {{# }else{ }}
+        <a class="layui-btn layui-btn-xs" lay-event="ban">封禁</a>
+        {{# } }}
+        <a class="layui-btn layui-btn-xs" lay-event="check">查看</a>
+    </script>
+
 
     <script>
         layui.use('table', function(){
@@ -42,8 +57,9 @@
                     ,{field:'name',  title: '用户昵称',sort:true}
                     ,{field:'descp',  title: '个人简介'}
                     ,{field:'createTime',  title: '注册时间',sort:true}
-                    ,{field:'type',  title: '权限',sort:true}
+                    ,{field:'type',  title: '权限',width:80,sort:true}
                     ,{field:'userState',  title: '状态', width:110, sort: true, templet: '#checkboxTpl', unresize: true}
+                    ,{fixed: 'right', title :'操作',width:178, align:'center', toolbar: '#barDemo'}
                 ]]
                 ,page: true
                 ,parseData: function(res){ //res 即为原始返回的数据
@@ -54,6 +70,68 @@
                         "data": res.data //解析数据列表
                     };
                 }
+            });
+
+            table.on('tool(user_table)',function (obj) {
+                var id = obj.data.id;
+                if(obj.event == 'check'){
+                    window.open("/user?id="+id,"_blank");
+                }else if(obj.event == 'ban'){
+                    layer.prompt({
+                        formType:2,
+                        title:'请填写封禁原因（必填）',
+                        area:['500px','150px'],
+                        btnAlign:'c',
+                        offset:'auto'
+                    },function(value,index,elem){
+                        var note = value;
+                        $.ajax({
+                            url: "http://localhost:8080/admin/banUser",
+                            type: "post",
+                            data: {"userId": id,"note": note},
+                            dataType: "json",
+                            offset:'auto',
+                            success: function (result) {
+                                //如果删除成功
+                                if (result.status == 0) {
+                                    layer.msg('封禁成功!', {icon: 6});
+                                    window.location.reload();
+                                } else {
+                                    window.location.reload();
+                                }
+                            },
+                            error: function () {
+                                alert("封禁发生异常");
+                            }
+                        });
+                        layer.close(index);
+                    });
+                }else if(obj.event == 'deban'){
+                    layer.confirm('确定解禁该用户id:' + id +'吗?。', {icon: 3, title:'提示'}, function(index){
+                        $.ajax({
+                            url: "http://localhost:8080/admin/debanUser",
+                            type: "post",
+                            data: {"userId": id},
+                            dataType: "json",
+                            offset:'auto',
+                            success: function (result) {
+                                //如果删除成功
+                                if (result.status == 0) {
+                                    //TODO 网页内静态改变table元素值，可以不用刷新，改善观感
+                                    layer.msg('解禁成功!', {icon: 6});
+                                    window.location.reload();
+                                } else {
+                                    window.location.reload();
+                                }
+                            },
+                            error: function () {
+                                alert("解禁发生异常");
+                            }
+                        });
+                        layer.close(index);
+                    });
+                }
+
             });
         });
 

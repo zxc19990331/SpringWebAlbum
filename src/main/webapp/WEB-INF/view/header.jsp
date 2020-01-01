@@ -56,6 +56,17 @@
     });
 
     $("#logout").click(function () {
+        //TODO 这里有有关session的bug
+        //如果当前是/me或者/admin或者/sendMessage，则跳转回主页，否则刷新
+        //没有吊用
+        // var path = window.location.pathname;
+        // var ii = ['/me','/admin','/sendMessage'];
+        // ii.forEach(function (value) {
+        //     if(path.indexOf(value) === 0 ){
+        //         window.location.href = "/home";
+        //         return;
+        //     }
+        // });
         $.ajax({
             url:"http://localhost:8080/logout",
             type:"get",
@@ -64,7 +75,7 @@
                 window.location.reload();
             },
             error:function () {
-                window.location.reload();
+                window.location.href = "/home";
             }
         })
     });

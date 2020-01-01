@@ -61,12 +61,12 @@ public class Message {
     }
 
     public Message(Map<String,Object> map){
-        setId((String)map.get(Constant.Message_ID));
-        setToId((String)map.get(Constant.Message_TOID));
-        setFromId((String)map.get(Constant.Message_FROMID));
-        setContext((String)map.get(Constant.Message_CONTEXT));
-        setCreateTime((String)map.get(Constant.Message_CREATE_TIME));
-        setExtra((String)map.get(Constant.Message_EXTRA));
+        setId((String)map.get(Constant.MESSAGE_ID));
+        setToId((String)map.get(Constant.MESSAGE_TOID));
+        setFromId((String)map.get(Constant.MESSAGE_FROMID));
+        setContext((String)map.get(Constant.MESSAGE_CONTEXT));
+        setCreateTime((String)map.get(Constant.MESSAGE_CREATE_TIME));
+        setExtra((String)map.get(Constant.MESSAGE_EXTRA));
     }
 
 }

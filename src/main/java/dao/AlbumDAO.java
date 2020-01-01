@@ -13,6 +13,11 @@ public class AlbumDAO {
         return JDBCDAO.select(String.format("SELECT * FROM album "));
     }
 
+    public static List<Map<String, Object>> getAlbumInfoListAll(int page,int limit){
+        int pre = limit*(page-1);
+        return JDBCDAO.select(String.format("SELECT TOP %d * FROM album WHERE id NOT IN (SELECT TOP %d id FROM album)",limit,pre));
+    }
+
     public static List<Map<String, Object>> getAlbumInfoListByUserId(String userId){
         return JDBCDAO.select(String.format("SELECT * FROM album WHERE user_id = '%s'",userId));
     }
@@ -88,6 +93,10 @@ public class AlbumDAO {
 
     public static boolean setCover(String albumId,String photoId){
         return JDBCDAO.insertOrDeleteOrUpdate(String.format("UPDATE album SET cover_id = '%s' WHERE id = '%s'",photoId,albumId));
+    }
+
+    public static boolean setState(String albumId,String state){
+        return JDBCDAO.insertOrDeleteOrUpdate(String.format("UPDATE album SET album_state = '%s' WHERE id = '%s'",state,albumId));
     }
 
     public static boolean isAlbumExist(String albumId){

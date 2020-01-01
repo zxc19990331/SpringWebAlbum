@@ -1,5 +1,8 @@
 package constant;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Constant {
     //至尊nb
     public static final String IMAGE_PATH = "E:\\study-软件工程\\web_album_rep";
@@ -23,12 +26,12 @@ public class Constant {
     public static final String PHOTO_NAME = "name";
     public static final String URL = "url";
 
-    public static final String Message_ID="id";
-    public static final String Message_TOID="to_id";
-    public static final String Message_FROMID="from_id";
-    public static final String Message_CONTEXT="context";
-    public static final String Message_CREATE_TIME="create_time";
-    public static final String Message_EXTRA="extra";
+    public static final String MESSAGE_ID ="id";
+    public static final String MESSAGE_TOID ="to_id";
+    public static final String MESSAGE_FROMID ="from_id";
+    public static final String MESSAGE_CONTEXT ="context";
+    public static final String MESSAGE_CREATE_TIME ="create_time";
+    public static final String MESSAGE_EXTRA ="extra";
 
     public static final String ORDER_DEFAULT = "order_default";
     public static final String ORDER_DATE = "order_date";
@@ -40,7 +43,21 @@ public class Constant {
 
     public static final String BAN_USR = "ban_user";
     public static final String DEBAN_USR = "deban_user";
+    public static final String BAN_ALBUM = "ban_album";
+    public static final String DEBAN_ALBUM = "deban_album";
 
+    public static final String ID = "id";
+    public static final String FROM_ID = "from_id";
+    public static final String TO_ID = "to_id";
+    public static final String OPERATE = "operate";
+    public static final String NOTE = "note";
+
+    public static final Map<String,String> OP_NAME_MAP = new HashMap<String,String>(){{
+        put(BAN_USR,"封禁用户");
+        put(BAN_ALBUM,"封禁相册");
+        put(DEBAN_USR,"解禁用户");
+        put(DEBAN_ALBUM,"解禁相册");
+    }};
 
     public static final String COM_ID = "id";
     public static final String COM_CONTEXT = "context";

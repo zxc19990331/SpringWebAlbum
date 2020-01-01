@@ -71,6 +71,18 @@ public class AlbumServer {
         return dataResult;
     }
 
+    public static DataResult getAllAlbum(int page,int limit){
+        List<Album> albumList = new ArrayList<>();
+        List<Map<String,Object>> maps = AlbumDAO.getAlbumInfoListAll(page,limit);
+        if(maps == null){
+            return DataResult.fail("get albums fail");
+        }
+        for (Map<String, Object> map : maps) {
+            albumList.add(new Album(map));
+        }
+        return DataResult.success("get albums success", albumList);
+    }
+
 
     //TODO 太乱了 要改
     public static DataResult getPhotoInfoListByAlbumId(String albumId,String order){
@@ -180,6 +192,10 @@ public class AlbumServer {
         }
     }
 
+    public static DataResult setState(String albumId,String state){
+        boolean res = AlbumDAO.setState(albumId,state);
+        return res?DataResult.success("set album state success",null):DataResult.fail("set album state fail");
+    }
 
     public static boolean checkAlbumExist(String albumId){
         return AlbumDAO.isAlbumExist(albumId);

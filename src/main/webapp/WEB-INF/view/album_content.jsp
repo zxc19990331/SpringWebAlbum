@@ -170,8 +170,8 @@
             </div>
 
             <c:if  test="${Info.userId ==sessionScope.myInfo.id}">
-                <div class="del button-font" id="delCom" onclick = "clickDel(this)" data-id = '${Info.id}' data-name = '${Info.userId}'>
-                    <a class="del_comment" data-id="1"> <i id = "del" class="icon layui-icon" > 删除</i> </a>
+                <div class="del" id="delCom" onclick = "clickDel(this)" data-id = '${Info.id}' data-name = '${Info.userId}'>
+                    <a class="del_comment" data-id="1"> <i id = "del" class="icon layui-icon button-font" > 删除</i> </a>
                 </div>
             </c:if>
 

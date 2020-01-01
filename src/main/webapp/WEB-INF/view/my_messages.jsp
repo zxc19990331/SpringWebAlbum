@@ -33,7 +33,9 @@
                     <c:forEach items="${reciveMessageList}" var="message">
                         <div class="horizentol msg-item">
                             <div class="imgdiv">
+                                <a href="/user?id=${message.fromId}">
                                 <img class="imgcss" src="/getAvatar?id=${message.fromId}"/>
+                                </a>
                             </div>
                             <div class="vertical msg-right-box">
                                 <div  style="font-weight: bold">${message.fromId}</div>
@@ -50,7 +52,9 @@
                     <c:forEach items="${sendMessageList}" var="message">
                         <div class="horizentol msg-item">
                             <div class="imgdiv">
+                                <a href="/user?id=${message.fromId}">
                                 <img class="imgcss" src="/getAvatar?id=${message.toId}"/>
+                                </a>
                             </div>
                             <div class="vertical msg-right-box">
                                 <div  style="font-weight: bold">发送给:${message.toId}</div>

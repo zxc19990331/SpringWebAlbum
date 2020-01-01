@@ -41,9 +41,9 @@
     <c:if test="${sessionScope.myInfo.type == 'admin'}">
         <div class="personal-menu" style="margin-bottom: 20px">
             <ul>
-                <li><a href="">管理用户相册</a></li>
+                <li><a href="/admin/albums">管理用户相册</a></li>
                 <li><a href="/admin/users">管理用户状态</a></li>
-                <li><a href="">操作记录</a></li>
+                <li><a href="/admin/operations">操作记录</a></li>
 
             </ul>
         </div>

@@ -25,7 +25,11 @@
     </div>
 
     <script type="text/html" id="barDemo">
-        <a class="layui-btn layui-btn-xs" lay-event="check">查看</a>
+        {{# if(d.albumState == 'banned') {}}
+        <a class="layui-btn layui-btn-xs" lay-event="deban">解封</a>
+        {{# }else{ }}
+        <a class="layui-btn layui-btn-xs" lay-event="ban">封禁</a>
+        {{# } }}
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>
@@ -36,7 +40,7 @@
 
             table.render({
                 elem: '#test'
-                ,url:'http://localhost:8080/me/getMyAlbum'
+                ,url:'http://localhost:8080/admin/getAlbumList'
                 ,cols: [[
                     {field:'id',  title: '相册ID', sort: true}
                     ,{field:'name',  title: '相册名',sort:true}
@@ -64,16 +68,13 @@
                 }
             });
             table.on('tool(album_table)',function (obj) {
-                if(obj.event === 'check'){
-                    var url = '/album?id=' + obj.data.id;
-                    window.open(url,"_blank");
-                }
-                else if(obj.event === 'edit'){
+                var albumName = obj.data.name;
+                var albumId = obj.data.id;
+                if(obj.event === 'edit'){
                     var url = '/editAlbum?albumId=' + obj.data.id;
                     window.open(url,"_blank");
-                }else if(obj.event === 'del'){
-                    var albumName = obj.data.name;
-                    var albumId = obj.data.id;
+                }
+                else if(obj.event === 'del'){
                     layer.confirm('确定删除该相册「' + albumName +'」吗?该相册下的照片也会一并删除。', {icon: 3, title:'提示'}, function(index){
                         $.ajax({
                             url: "http://localhost:8080/delAlbum",
@@ -95,7 +96,8 @@
                         });
                         layer.close(index);
                     });
-                } else if (obj.event === 'preview'){
+                }
+                else if (obj.event === 'preview'){
                     var url = "/getImage?url=" + obj.data.coverId;
                     var width = 800;
                     var height = 800;
@@ -128,6 +130,61 @@
                             return false;
                         },
                         content: '<div style="text-align:center"><img src="'+url+'" /></div>'
+                    });
+                }
+                else if(obj.event === 'ban'){
+                    layer.prompt({
+                        formType:2,
+                        title:'请填写封禁原因（必填）',
+                        area:['500px','150px'],
+                        btnAlign:'c',
+                        offset:'auto'
+                    },function(value,index,elem){
+                        var note = value;
+                        $.ajax({
+                            url: "http://localhost:8080/admin/banAlbum",
+                            type: "post",
+                            data: {"albumId": albumId,"note": note},
+                            dataType: "json",
+                            offset:'auto',
+                            success: function (result) {
+                                //如果删除成功
+                                if (result.status == 0) {
+                                    layer.msg('封禁成功!', {icon: 6});
+                                    window.location.reload();
+                                } else {
+                                    window.location.reload();
+                                }
+                            },
+                            error: function () {
+                                alert("封禁发生异常");
+                            }
+                        });
+                        layer.close(index);
+                    });
+                }
+                else if (obj.event === 'deban'){
+                    layer.confirm('确定解禁该相册「' + albumName +'」吗?。', {icon: 3, title:'提示'}, function(index){
+                        $.ajax({
+                            url: "http://localhost:8080/admin/debanAlbum",
+                            type: "post",
+                            data: {"albumId": albumId},
+                            dataType: "json",
+                            offset:'auto',
+                            success: function (result) {
+                                //如果删除成功
+                                if (result.status == 0) {
+                                    layer.msg('解禁成功!', {icon: 6});
+                                    window.location.reload();
+                                } else {
+                                    window.location.reload();
+                                }
+                            },
+                            error: function () {
+                                alert("解禁发生异常");
+                            }
+                        });
+                        layer.close(index);
                     });
                 }
             })
