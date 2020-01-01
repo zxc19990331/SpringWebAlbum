@@ -33,7 +33,7 @@
             <li><a href="/me/messages">我的私信</a></li>
             <li><a href="/me/follow">我的关注</a></li>
             <li><a href="/me/info">个人信息与资料</a></li>
-            <li><a href="">我的统计</a></li>
+            <li><a href="/me/mysta?id=${sessionScope.myInfo.id}">我的统计</a></li>
         </ul>
     </div>
 

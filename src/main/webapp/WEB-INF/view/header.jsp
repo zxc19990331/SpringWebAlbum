@@ -34,6 +34,7 @@
             <dd><a href="/me/messages">我的私信</a></dd>
             <dd><a href="/me/follow">我的关注</a></dd>
             <dd><a href="/me/info">个人信息</a></dd>
+            <dd><a href="/me/mysta?id=${sessionScope.myInfo.id}">我的统计</a></dd>
             <c:if test="${sessionScope.myInfo.type=='admin'}">
                 <dd><a href="/admin/users">管理员后台</a></dd>
             </c:if>

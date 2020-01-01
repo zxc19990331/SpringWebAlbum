@@ -1,9 +1,7 @@
 package controller;
 
 import entity.DataResult;
-import model.Album;
-import model.Message;
-import model.User;
+import model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -98,4 +96,12 @@ public class MeController {
         User user = (User)session.getAttribute("myInfo");
         return AlbumServer.getPhotoInfoListByAlbumId(albumId,page,limit);
     }
+
+    @RequestMapping("/mysta")
+    public String getStatistics(@RequestParam("id")String uId, Model model){
+        Statistics statistics =  (Statistics) StatisticsServer.getStatistics(uId).getData();
+        model.addAttribute("mystatis",statistics);
+        return "my_statistics";
+    }
+
 }
