@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import server.AlbumServer;
 import server.CommentServer;
+import server.FollowServer;
 import server.PhotoServer;
 
 import javax.servlet.http.HttpSession;
@@ -30,7 +31,7 @@ public class AlbumController {
     }
 
     @RequestMapping("/album")
-    public ModelAndView enterAlbum(@RequestParam("albumId")String albumId,Model model){
+    public ModelAndView enterAlbum(@RequestParam("albumId")String albumId,Model model,HttpSession session){
 //        TODO:容错判断 排序功能
         List<Photo> photoList = (List<Photo>)AlbumServer.getPhotoInfoListByAlbumId(albumId, Constant.ORDER_DATE_ASC).getData();
         Album album = (Album) AlbumServer.getAlbumInfoById(albumId).getData();
@@ -42,8 +43,17 @@ public class AlbumController {
             e.printStackTrace();
         }
 
+        User user= (User) session.getAttribute("myInfo");
+        int res = 0;
+        if(user!= null){
+            if(FollowServer.checkFollow(user.getId(),album.getUserId()).getStatus() == 0){
+                res = 1;
+            }
+        }
+        System.out.println("ALBUM FOLLOW:" + res);
         model.addAttribute("photoList",photoList);
         model.addAttribute("albumInfo",album);
+        model.addAttribute("isFollow",res);
         return new ModelAndView("album_content");
     }
 
@@ -126,4 +136,8 @@ public class AlbumController {
             return dataResult;
         }
     }
+
+
+
+
 }

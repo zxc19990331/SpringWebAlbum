@@ -32,7 +32,7 @@ public class FollowServer {
     public static DataResult addFollow(String fromId,String toId){
         DataResult dataResult = new DataResult();
         boolean res = FollowDAO.addFollow(fromId,toId);
-        if(res!=true){
+        if(res == true){
             dataResult.setStatus(0);
             dataResult.setMsg("add new follow success");
 //            Follow follow = new Follow(FollowDAO.getFollowInfoListById(fromId,toId));
@@ -53,6 +53,21 @@ public class FollowServer {
         }else{
             dataResult.setStatus(-1);
             dataResult.setMsg("delete follow error");
+        }
+        return dataResult;
+    }
+
+    public static DataResult checkFollow(String fromId,String toId){
+        DataResult dataResult = new DataResult();
+        boolean res = FollowDAO.isFollow(fromId,toId);
+        if(res == true){
+            System.out.println("CHECKSERVER IS");
+            dataResult.setStatus(0);
+            dataResult.setMsg("is followed");
+        }else {
+            System.out.println("CHECKSERVER NOT");
+            dataResult.setStatus(-1);
+            dataResult.setMsg("is not followed");
         }
         return dataResult;
     }

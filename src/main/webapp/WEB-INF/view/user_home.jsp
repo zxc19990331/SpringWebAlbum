@@ -25,6 +25,63 @@
             $('.card-box.corner-img-div').mouseleave(function () {
                 $(this).find(".corner-img-item.layui-btn-group").hide();
             });
+
+            $("#GUANZHU").click(function () {
+                var toId = "${userInfo.id}"
+                $.ajax({
+                    url: "http://localhost:8080/addfow",
+                    type: "post",
+                    data: {"TID":toId},
+                    dataType: "json",
+                    success: function (result) {
+                        console.log(result.data);
+                        if (result.status == 0) {
+                            window.location.reload();
+                        } else {
+                            layer.open({
+                                offset:'250px',
+                                title: '关注失败 请登录！',
+                                content: '关注失败',
+                                shade: 0.5,
+                                yes: function(){
+                                    window.location.href = "http://localhost:8080/";
+                                }
+                            });
+
+                        }
+                    },
+                    error: function () {
+                        alert("关注异常");
+                    }
+                });
+            });
+
+            $("#QUGUAN").click(function () {
+                var toId = "${userInfo.id}"
+                layer.confirm('确定取消关注吗?', {icon: 3, title:'提示',offset:'250px'}, function(index){
+                    $.ajax({
+                        url: "http://localhost:8080/delfow",
+                        type: "post",
+                        data: {"TID":toId},
+                        dataType: "json",
+                        success: function (result) {
+                            console.log(result.status);
+                            console.log(result.data);
+                            //如果删除成功
+                            if (result.status == 0) {
+                                layer.msg('取消关注成功!', {icon: 6});
+                                window.location.reload();
+                            } else {
+                                window.location.reload();
+                            }
+                        },
+                        error: function () {
+                            alert("取消关注发生异常");
+                        }
+                    });
+                    layer.close(index);
+                });
+            });
         });
         
         function clickDel(e) {
@@ -73,7 +130,21 @@
         <%--自己的主页没有关注和私信--%>
         <c:if test="${sessionScope.myInfo.id != userInfo.id}">
             <div style="margin-top:10px;padding-bottom: 10px">
-                <button type="button" class="layui-btn">关注</button>
+                <c:if test="${empty sessionScope.myInfo}">
+                    <a href="/index">
+                    <button id = "GUANZHU1" type="button" class="layui-btn">登录后关注</button>
+                    </c:if>
+
+                        <c:if test="${not empty sessionScope.myInfo}">
+                        <c:if test="${isFollow == 1}">
+                        <button id = "QUGUAN" type="button" class="layui-btn layui-btn-primary">取消关注</button>
+                        </c:if>
+                        <c:if test="${isFollow == 0}">
+                        <button id = "GUANZHU" type="button" class="layui-btn">关注</button>
+                        </c:if>
+                        </c:if>
+
+                <a href="/sendMessage?id=${albumInfo.userId}"></a>
                 <button type="button" class="layui-btn">私信</button>
             </div>
         </c:if>

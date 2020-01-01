@@ -26,7 +26,7 @@
                 $.ajax({
                     url: "http://localhost:8080/delfow",
                     type: "post",
-                    data: {"FID": fromId,"TID":toId},
+                    data: {"TID":toId},
                     dataType: "json",
                     success: function (result) {
                         console.log(result.status);
