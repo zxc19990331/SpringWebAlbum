@@ -93,7 +93,7 @@
                             success: function (result) {
                                 //如果删除成功
                                 if (result.status == 0) {
-                                    layer.msg('删除成功!', {icon: 6});
+                                    layer.msg('删除成功!', {icon: 6,offset:250});
                                     window.location.reload();
                                 } else {
                                     window.location.reload();
@@ -159,7 +159,7 @@
                             success: function (result) {
                                 //如果删除成功
                                 if (result.status == 0) {
-                                    layer.msg('封禁成功!', {icon: 6});
+                                    layer.msg('封禁成功!', {icon: 6,offset:250});
                                     window.location.reload();
                                 } else {
                                     window.location.reload();
@@ -183,7 +183,7 @@
                             success: function (result) {
                                 //如果删除成功
                                 if (result.status == 0) {
-                                    layer.msg('解禁成功!', {icon: 6});
+                                    layer.msg('解禁成功!', {icon: 6,offset:250});
                                     window.location.reload();
                                 } else {
                                     window.location.reload();

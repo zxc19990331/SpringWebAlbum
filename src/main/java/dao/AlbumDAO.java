@@ -99,6 +99,10 @@ public class AlbumDAO {
         return JDBCDAO.insertOrDeleteOrUpdate(String.format("UPDATE album SET album_state = '%s' WHERE id = '%s'",state,albumId));
     }
 
+    public static boolean addPraise(String albumId){
+        return JDBCDAO.insertOrDeleteOrUpdate(String.format("UPDATE album SET praise_count = praise_count + 1 WHERE id = '%s'",albumId));
+    }
+
     public static boolean isAlbumExist(String albumId){
         List<Map<String, Object>> res = JDBCDAO.select(String.format("SELECT * FROM album WHERE id = '%s'",albumId));
         return !(res.size()==0);

@@ -137,6 +137,11 @@ public class AlbumController {
         }
     }
 
+    @RequestMapping("/addPraise")
+    @ResponseBody
+    public DataResult addPraise(@RequestParam("albumId")String albumId){
+        return AlbumServer.addAlbumPraise(albumId);
+    }
 
 
 

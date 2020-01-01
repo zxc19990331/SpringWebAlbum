@@ -2,7 +2,6 @@ package controller;
 
 import entity.DataResult;
 import model.Album;
-import model.Follow;
 import model.Message;
 import model.User;
 import org.springframework.stereotype.Controller;
@@ -46,7 +45,7 @@ public class MeController {
     public String enterMyFollows(HttpSession session,Model model){
           User user = (User)session.getAttribute("myInfo");
 
-          List<Follow> FollowList = (List<Follow>) FollowServer.getFollowInfoById(user.getId()).getData();
+          List<User> FollowList = (List<User>) FollowServer.getFollowInfoById(user.getId()).getData();
 
           model.addAttribute("followList",FollowList);
           return "my_follow";

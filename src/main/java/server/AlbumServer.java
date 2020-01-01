@@ -197,6 +197,11 @@ public class AlbumServer {
         return res?DataResult.success("set album state success",null):DataResult.fail("set album state fail");
     }
 
+    public static DataResult addAlbumPraise(String albumId){
+        boolean res = AlbumDAO.addPraise(albumId);
+        return res?DataResult.success("add praise success",null):DataResult.fail("add praise fail");
+    }
+
     public static boolean checkAlbumExist(String albumId){
         return AlbumDAO.isAlbumExist(albumId);
     }

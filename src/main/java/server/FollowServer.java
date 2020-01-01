@@ -5,7 +5,7 @@ import dao.AlbumDAO;
 import dao.CommentDAO;
 import dao.FollowDAO;
 import entity.DataResult;
-import model.Follow;
+import model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +14,12 @@ import java.util.Map;
 public class FollowServer {
     public static DataResult getFollowInfoById(String fromId){
         DataResult dataResult = new DataResult();
-
         dataResult.setStatus(0);
         dataResult.setMsg("get follow info");
-        List<Follow> followList = new ArrayList<>();
+        List<User> followList = new ArrayList<>();
         List<Map<String,Object>> maps = FollowDAO.getFollowInfoListById(fromId);
         for(Map<String,Object>map:maps){
-            followList.add(new Follow(map));
+            followList.add(new User(map));
         }
 
         dataResult.setMsg("get comment success");

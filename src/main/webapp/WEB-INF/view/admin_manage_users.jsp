@@ -94,7 +94,7 @@
                             success: function (result) {
                                 //如果删除成功
                                 if (result.status == 0) {
-                                    layer.msg('封禁成功!', {icon: 6});
+                                    layer.msg('封禁成功!', {icon: 6,offset:250});
                                     window.location.reload();
                                 } else {
                                     window.location.reload();
@@ -118,7 +118,7 @@
                                 //如果删除成功
                                 if (result.status == 0) {
                                     //TODO 网页内静态改变table元素值，可以不用刷新，改善观感
-                                    layer.msg('解禁成功!', {icon: 6});
+                                    layer.msg('解禁成功!', {icon: 6,offset:250});
                                     window.location.reload();
                                 } else {
                                     window.location.reload();

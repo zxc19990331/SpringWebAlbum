@@ -99,14 +99,14 @@
                     dataType: "json",
                     success: function (res) {
                         if (res.status == 0) {
-                            layer.msg("编辑成功!请刷新页面!");
+                            layer.msg("编辑成功!请刷新页面!",{offset:250});
                             //TODO:跳转到新相册的页面
                         } else {
                             layer.msg("编辑失败!");
                         }
                     },
                     error: function () {
-                        layer.msg("编辑个人信息遇到问题!");
+                        layer.msg("编辑个人信息遇到问题!",{offset:250});
                     }
                 });
 

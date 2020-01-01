@@ -96,11 +96,11 @@
                     dataType:"json",
                     success:function (res) {
                         if(res.status==0){
-                            layer.msg("创建成功!");
+                            layer.msg("创建成功!",{offset:250});
                             //TODO:跳转到新相册的页面
                             window.location.href = "/album?albumId="+res.data.id;
                         }else {
-                            layer.msg("创建失败!");
+                            layer.msg("创建失败!",{offset:250});
                         }
                     },
                     error:function () {

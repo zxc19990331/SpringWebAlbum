@@ -16,6 +16,29 @@
     <script src="${pageContext.request.contextPath}/static/layui/layui.all.js"></script>
     <script type="text/javascript">
         $(function(){
+            $("#icon_praise").click(function () {
+                $.ajax({
+                    url: "http://localhost:8080/addPraise",
+                    type: "post",
+                    data: {"albumId":'${albumInfo.id}'},
+                    dataType: "json",
+                    success: function (result) {
+                        console.log(result.data);
+                        if (result.status == 0) {
+                            layer.msg("点赞成功!");
+                            var praise = parseInt($("#praise_count").html());
+                            $("#praise_count").html(praise + 1);
+                            console.log(praise);
+                        } else {
+                            layer.msg("点赞失败!",{offset:250});
+                        }
+                    },
+                    error: function () {
+                        alert("点赞异常");
+                    }
+                });
+            });
+
             $("#COMMENT").click(function () {
                 var commentText = $("#CommentText").val();
                 var aId = "${albumInfo.id}";
@@ -105,7 +128,7 @@
                             console.log(result.data);
                             //如果删除成功
                             if (result.status == 0) {
-                                layer.msg('取消关注成功!', {icon: 6});
+                                layer.msg('取消关注成功!', {icon: 6,offset:250});
                                 window.location.reload();
                             } else {
                                 window.location.reload();
@@ -164,7 +187,7 @@
     </div>
     <div class="album-author-box horizentol border-left">
         <div class="album-info-avatar">
-            <a href="/user?id=${albumInfo.userId}"><img src="/getAvatar?id=${userInfo.id}"></a>
+            <a href="/user?id=${albumInfo.userId}"><img src="/getAvatar?id=${albumInfo.userId}"></a>
         </div>
         <div class="vertical" style="margin-left: 10px">
             <div style="font-size: 16px">上传者：${albumInfo.userId}</div>
@@ -203,6 +226,18 @@
             <div class="gray-color">${photo.name}</div>
         </div>
     </c:forEach>
+
+</div>
+
+<%--点赞按钮--%>
+<div style="width: 100%">
+    <div class="horizentol" style="margin-left: 45%;">
+        <div id = "icon_praise">
+            <i class="layui-icon layui-icon-praise"  style="margin-right:10px;font-size: 40px; color: #009688;"></i>
+        </div>
+
+        <div id="praise_count" style="color: #bbbbbb;font-size:35px">${albumInfo.praiseCount}</div>
+    </div>
 
 </div>
 

@@ -10,7 +10,7 @@ import java.util.Map;
 public class FollowDAO {
 
     public static List<Map<String, Object>> getFollowInfoListById(String fromId){
-        return JDBCDAO.select(String.format("SELECT * FROM dbo.follow WHERE from_id = '%s'",fromId));
+        return JDBCDAO.select(String.format("SELECT * FROM users WHERE id IN (SELECT to_id  FROM follow WHERE from_id = '%s')",fromId));
     }
 
     public static boolean delFollow(String fromId,String toId){

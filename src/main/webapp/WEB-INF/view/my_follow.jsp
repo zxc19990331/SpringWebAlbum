@@ -19,8 +19,7 @@
     <script type="text/javascript">
 
         function clickdelfollow(e) {
-            var fromId = $(e).attr("data-id");
-            var toId = $(e).attr("data-name");
+            var toId = $(e).attr("data-id");
 
             layer.confirm('确定取消关注吗?', {icon: 3, title:'提示',offset:'250px'}, function(index){
                 $.ajax({
@@ -59,18 +58,30 @@
             </ul>
             <div class="layui-tab-content" style="">
                 <div class="layui-tab-item layui-show">
-                    <c:forEach items="${followList}" var="message">
-                        <div id="toFollow">
-                            <a href="/user?id=${message.toId}">
-                                <img src="/getAvatar?id= ${message.toId}"/>
-                            </a>
-
-                            <button id="delfol" type="button" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal"
-                                    onclick = "clickdelfollow(this)" data-id = '${message.fromId}' data-name = '${message.toId}'>
-                                取消关注
-                            </button>
-                        </div>
-                    </c:forEach>
+                    <div class="horizentol">
+                        <c:forEach items="${followList}" var="user">
+                            <div id="toFollow" class="horizentol" style="width: 350px;margin-right: 15px">
+                                <div class="imgdiv follow-item">
+                                    <a href="/user?id=${user.id}" target="_blank">
+                                        <img class="imgcss" src="/getAvatar?id=${user.id}"/>
+                                    </a>
+                                </div>
+                                <div class="vertical follow-item">
+                                    <div class="horizentol">
+                                        <div>${user.name}</div>
+                                        <div class="detail-font" style="margin-left: 5px">ID:${user.id}</div>
+                                    </div>
+                                    <div class="detail-font">
+                                        ${user.descp}
+                                    </div>
+                                </div>
+                                <button id="delfol" type="button" class="layui-btn layui-btn-sm layui-btn-radius" style="margin-left: 45px"
+                                        onclick = "clickdelfollow(this)" data-id = '${user.id}'>
+                                    取消关注
+                                </button>
+                            </div>
+                        </c:forEach>
+                    </div>
                 </div>
 
             </div>
