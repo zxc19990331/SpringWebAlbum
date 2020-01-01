@@ -31,7 +31,7 @@
             <li><a href="/me/albums">管理相册</a></li>
             <li><a href="/me/photos">管理照片</a></li>
             <li><a href="/me/messages">我的私信</a></li>
-            <li><a href="">我的关注</a></li>
+            <li><a href="/me/follow">我的关注</a></li>
             <li><a href="/me/info">个人信息与资料</a></li>
             <li><a href="">我的统计</a></li>
         </ul>

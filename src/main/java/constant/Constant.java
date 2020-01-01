@@ -64,5 +64,8 @@ public class Constant {
     public static final String COM_USERID = "user_id";
     public static final String COM_FROMID = "from_id";
 
+    public static final String FOLLOW_FROMID = "from_id";
+    public static final String FOLLOW_TOID = "to_id";
+
 
 }

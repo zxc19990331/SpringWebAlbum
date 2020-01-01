@@ -61,13 +61,14 @@
             $("#COMMENT1").click(function () {
                 window.location.href = "http://localhost:8080/";
             });
+
         });
 
         function clickDel(e) {
             var commentId = $(e).attr("data-id");
             var userName = $(e).attr("data-name");
 
-            layer.confirm('确定删除该评论吗?', {icon: 3, title:'提示'}, function(index){
+            layer.confirm('确定删除该评论吗?', {icon: 3, title:'提示',offset:'250px'}, function(index){
                 $.ajax({
                     url: "http://localhost:8080/delcomment",
                     type: "post",
@@ -113,7 +114,7 @@
             <div>
                 <c:if test="${sessionScope.myInfo.id != albumInfo.userId}">
                     <div style="margin-top:10px">
-                        <button type="button" class="layui-btn">关注</button>
+                        <button id = "GUANZHU" type="button" class="layui-btn">关注</button>
                         <a href="/sendMessage?id=${albumInfo.userId}">
                         <button type="button" class="layui-btn">私信</button>
                         </a>

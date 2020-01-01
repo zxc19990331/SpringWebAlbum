@@ -2,6 +2,7 @@ package controller;
 
 import entity.DataResult;
 import model.Album;
+import model.Follow;
 import model.Message;
 import model.User;
 import org.springframework.stereotype.Controller;
@@ -9,10 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import server.AlbumServer;
-import server.MessageServer;
-import server.PhotoServer;
-import server.UserServer;
+import server.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -42,6 +40,17 @@ public class MeController {
         model.addAttribute("albumList",albumList);
         return "my_photos";
     }
+
+    @RequestMapping("/follow")
+    public String enterMyFollows(HttpSession session,Model model){
+          User user = (User)session.getAttribute("myInfo");
+
+          List<Follow> FollowList = (List<Follow>) FollowServer.getFollowInfoById(user.getId()).getData();
+
+          model.addAttribute("followList",FollowList);
+          return "my_follow";
+    }
+
 
     @RequestMapping("/messages")
     public String enterMyMessages(HttpSession session,Model model){

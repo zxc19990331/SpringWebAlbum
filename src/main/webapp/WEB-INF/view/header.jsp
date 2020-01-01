@@ -32,7 +32,7 @@
             <dd><a href="/me/albums">管理相册</a></dd>
             <dd><a href="/me/photos">管理照片</a></dd>
             <dd><a href="/me/messages">我的私信</a></dd>
-            <dd><a href="">我的关注</a></dd>
+            <dd><a href="/me/follow">我的关注</a></dd>
             <dd><a href="/me/info">个人信息</a></dd>
             <c:if test="${sessionScope.myInfo.type=='admin'}">
                 <dd><a href="/admin/users">管理员后台</a></dd>
