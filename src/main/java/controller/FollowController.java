@@ -14,22 +14,21 @@ import javax.servlet.http.HttpSession;
 public class FollowController {
     @RequestMapping("/delfow")
     @ResponseBody
-    public DataResult delMyFollows(@RequestParam("FID")String fId,
-                                   @RequestParam("TID")String tId){
+    public DataResult delMyFollows(@RequestParam("TID")String tId,HttpSession session){
         System.out.println("DelFollow");
-        DataResult dataResult = FollowServer.deleteFollow(fId,tId);
+        User user= (User) session.getAttribute("myInfo");
+        DataResult dataResult = FollowServer.deleteFollow(user.getId(),tId);
         System.out.println(dataResult.getStatus());
         return dataResult;
     }
 
     @RequestMapping("/addfow")
     @ResponseBody
-    public DataResult addMyFollows(@RequestParam("id")String tId, HttpSession session){
-        System.out.println("AddFollow");
+    public DataResult addMyFollows(@RequestParam("TID")String tId, HttpSession session){
         User user= (User) session.getAttribute("myInfo");
+        System.out.println("AddFollow" + user.getId() + " " + tId);
         DataResult dataResult = FollowServer.addFollow(user.getId(),tId);
         System.out.println(dataResult.getMsg());
         return dataResult;
     }
-
 }

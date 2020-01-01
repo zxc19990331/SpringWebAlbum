@@ -19,8 +19,21 @@ public class FollowDAO {
 
     public static boolean addFollow(String fromId,String toId){
         String curDate = DateHelper.getCurrentDate();
-        return JDBCDAO.insertOrDeleteOrUpdate(String.format("INSERT INTO follow VALUES('%s','%s,'%s'')",
+        System.out.println("DAO: " + curDate);
+
+        return JDBCDAO.insertOrDeleteOrUpdate(String.format("INSERT INTO follow VALUES('%s','%s','%s')",
                 fromId,toId,curDate));
+
+    }
+
+    public static boolean isFollow(String fromId,String toId){
+
+        List<Map<String, Object>> obj =JDBCDAO.select(String.format("SELECT * FROM dbo.follow WHERE from_id = '%s' and to_id = '%s'",fromId,toId));
+        if(obj.isEmpty()){
+            return false;
+        }else {
+            return true;
+        }
 
     }
 
