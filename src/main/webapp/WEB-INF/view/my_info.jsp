@@ -18,12 +18,12 @@
 </head>
 <body class="bg-gray">
 <jsp:include page="header.jsp"></jsp:include>
-<div class="st-main horizentol" style="margin-top: 15px">
+<div class="st-main horizentol" style="">
 
     <jsp:include page="my_left_bar.jsp"></jsp:include>
     <div class="personal-content">
         <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-            <ul class="layui-tab-title" style="margin-left: 45px">
+            <ul class="layui-tab-title" style="">
                 <li class="layui-this">基本信息</li>
                 <li>上传头像</li>
             </ul>
@@ -70,13 +70,23 @@
                         </div>
                     </form>
                 </div>
-                <div class="layui-tab-item">上传头像</div>
+                <div class="layui-tab-item">
+                    <div class="layui-upload" style="">
+                        <%--头像预览--%>
+                        <div class="layui-upload-list">
+                            <img src="/getAvatar?id=${sessionScope.myInfo.id}"class="avatar-preview" id="demo1">
+                            <p id="demoText"></p>
+                        </div>
+                        <button type="button" class="layui-btn" id="test2">选择头像</button>
+                        <button type="button" id = 'btn_submit'class="layui-btn">上传头像</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        layui.use('form', function () {
+        layui.use(['form','upload'], function () {
             var form = layui.form;
 
             //监听提交
@@ -104,6 +114,34 @@
             });
             //here
             form.render();
+
+            var upload = layui.upload;
+
+            upload.render({
+                elem: '#test2'
+                ,url: 'http://localhost:8080/me/uploadAvatar'
+                ,multiple: true
+                ,field:'file'
+                ,auto:false
+                ,bindAction:'#btn_submit'
+                ,choose:function (obj) {
+                    obj.preview(function(index, file, result){
+                        $('#demo1').attr('src', result); //图片链接（base64）
+                    });
+                }
+                ,before: function(obj){
+                }
+                ,done: function(res){
+                    //上传完毕
+                    if(res.status == 0){
+                        layer.msg("上传成功！");
+                        window.location.reload();
+                    }else{
+                        layer.msg("上传失败！");
+                    }
+
+                }
+            });
         });
     </script>
 

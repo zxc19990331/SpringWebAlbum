@@ -54,7 +54,7 @@
     <jsp:include page="my_left_bar.jsp"></jsp:include>
     <div class="personal-content">
         <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-            <ul class="layui-tab-title" style="margin-left: 45px">
+            <ul class="layui-tab-title" style="">
                 <li class="layui-this">我的关注</li>
             </ul>
             <div class="layui-tab-content" style="">

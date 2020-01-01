@@ -24,6 +24,14 @@
         <table class="layui-hide" id="test" lay-filter="album_table"></table>
     </div>
 
+    <script type="text/html" id="checkboxTpl">
+        {{# if(d.albumState == 'banned') {}}
+        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs ">封禁</button>
+        {{# }else{ }}
+        <button type="button" class="layui-btn layui-btn-primary layui-btn-xs">正常</button>
+        {{# } }}
+    </script>
+
     <script type="text/html" id="barDemo">
         {{# if(d.albumState == 'banned') {}}
         <a class="layui-btn layui-btn-xs" lay-event="deban">解封</a>
@@ -43,6 +51,7 @@
                 ,url:'http://localhost:8080/admin/getAlbumList'
                 ,cols: [[
                     {field:'id',  title: '相册ID', sort: true}
+                    ,{field:'userId',  title: '所有者ID', sort: true}
                     ,{field:'name',  title: '相册名',sort:true}
                     ,{field:'category',  title: '分类',sort:true}
                     ,{field:'descp',  title: '相册描述'}
@@ -54,7 +63,7 @@
                         },width:80,event :'preview'
                     }
                     ,{field:'createTime',  title: '创建日期', sort: true}
-                    ,{field:'albumState',  title: '相册状态', sort: true}
+                    ,{field:'albumState',  title: '状态', width:110, sort: true, templet: '#checkboxTpl', unresize: true}
                     ,{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}
                 ]]
                 ,page: true

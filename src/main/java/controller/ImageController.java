@@ -71,5 +71,6 @@ public class ImageController {
     public void getAvatar(@RequestParam("id")String id,HttpServletResponse rp){
         String filePath = ImageHelper.getAvatarPath(id);
         handleRp(rp,filePath,AVATAR);
+        System.out.println("avatar path:" + filePath);
     }
 }

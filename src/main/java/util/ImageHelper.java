@@ -8,6 +8,6 @@ public class ImageHelper {
     }
 
     public static String getAvatarPath(String id){
-        return Constant.IMAGE_PATH + "\\avatar" + id + ".jpg";
+        return Constant.IMAGE_PATH + "\\avatar\\" + id + ".jpg";
     }
 }

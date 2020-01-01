@@ -448,3 +448,8 @@ body{
 .button-font:hover{
     color:#009688;
 }
+
+.avatar-preview{
+    width: 300px;
+    height: 300px;
+}

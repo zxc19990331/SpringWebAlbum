@@ -1,16 +1,26 @@
 package server;
 
+import constant.Constant;
 import dao.OperationDAO;
 import dao.UserDAO;
 import entity.DataResult;
 import model.User;
+import org.springframework.web.multipart.MultipartFile;
 import util.DateHelper;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class UserServer {
+
+    public static DataResult uploadAvatar(MultipartFile file,String userId) throws Exception{
+        String name = userId + ".jpg";
+        String path = Constant.IMAGE_PATH + "\\avatar";
+        file.transferTo(new File(path + File.separator + name));
+        return DataResult.success("upload avatar success",null);
+    }
 
     public static DataResult getUserList(int page,int limit){
         List<Map<String, Object>> maps = UserDAO.getUserList(page,limit);
@@ -33,6 +43,8 @@ public class UserServer {
         }
         return dataResult;
     }
+
+
     public static boolean checkUserExist(String id){
         return UserDAO.isUserIdExist(id);
     }
@@ -84,7 +96,6 @@ public class UserServer {
     }
 
     public static DataResult setState(String userId,String state){
-        //TODO : add op
         boolean res = UserDAO.setUserState(userId,state);
         if(res){
             return DataResult.success("set user state success",null);

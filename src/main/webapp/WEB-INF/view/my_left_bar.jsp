@@ -12,7 +12,7 @@
 <div class = "vertical" style="width: 250px">
     <div class="personal-card vertical" style="margin-bottom: 20px;padding:10px">
         <div class="me-avatar content-center">
-            <img src="/getAvatar?id=${userInfo.id}" width="150px"/>
+            <img src="/getAvatar?id=${sessionScope.myInfo.id}" width="150px"/>
         </div>
         <div class = "content-center" style="font-size: 24px">${sessionScope.myInfo.name}</div>
         <div class = "content-center" style="font-size: 14px;color: #bbbbbb">ID:${sessionScope.myInfo.id}</div>

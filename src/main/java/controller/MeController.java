@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import server.*;
 
 import javax.servlet.http.HttpSession;
@@ -74,6 +75,13 @@ public class MeController {
             session.setAttribute("myInfo",dataResult.getData());
         }
         return dataResult;
+    }
+
+    @RequestMapping("/uploadAvatar")
+    @ResponseBody
+    public DataResult uploadAvatar (@RequestParam("file") MultipartFile file,HttpSession session) throws Exception{
+        User user = (User)session.getAttribute("myInfo");
+        return UserServer.uploadAvatar(file,user.getId());
     }
 
     @RequestMapping("/getMyAlbum")
