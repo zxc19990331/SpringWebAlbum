@@ -3,9 +3,7 @@ package server;
 import dao.AlbumDAO;
 import dao.CommentDAO;
 import entity.DataResult;
-import model.Album;
 import model.Comment;
-import model.Photo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +20,7 @@ public class CommentServer {
             dataResult.setStatus(0);
             dataResult.setMsg("get comment info");
             List<Comment> commentList = new ArrayList<>();
-            List<Map<String,Object>> maps = CommentDAO.getcommentInfoListByAlbumId(albumId);
+            List<Map<String,Object>> maps = CommentDAO.getCommentInfoListByAlbumId(albumId);
             for(Map<String,Object>map:maps){
                 commentList.add(new Comment(map));
             }
@@ -58,7 +56,7 @@ public class CommentServer {
         if(res!=null){
             dataResult.setStatus(0);
             dataResult.setMsg("add new comment success");
-            Comment comment = new Comment(CommentDAO.getcommentInfoById(res));
+            Comment comment = new Comment(CommentDAO.getCommentInfoById(res));
             dataResult.setData(comment);
         }else{
             dataResult.setStatus(-1);

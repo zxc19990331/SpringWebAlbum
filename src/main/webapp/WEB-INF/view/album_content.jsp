@@ -109,7 +109,7 @@
         <div class="album-info-avatar">
             <a href="/user?id=${albumInfo.userId}"><img src="/getAvatar?id=${userInfo.id}"></a>
         </div>
-        <div class="vertical">
+        <div class="vertical" style="margin-left: 10px">
             <div style="font-size: 16px">上传者：${albumInfo.userId}</div>
             <div>
                 <c:if test="${sessionScope.myInfo.id != albumInfo.userId}">
@@ -150,31 +150,31 @@
     <div id="addComment" class="ADDCOM">
         <textarea  id = "CommentText" name="" required lay-verify="required" placeholder="说点什么吧" class="layui-textarea"></textarea>
         <div class="ADDBottom">
-            <button id="COMMENT" type="button" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal">发表评论 </button>
+            <button id="COMMENT" type="button" class="layui-btn layui-btn-lg layui-btn-radius">发表评论 </button>
         </div>
 
     </div>
 
     </c:if>
 
-    <hr>
 
     <h3 style="text-indent:1em;font-size:25px;">评论列表</h3>
     <c:forEach var="Info" items="${commentInfo}">
     <div class="comment">
         <div class="imgdiv">
-            <img class="imgcss"  src="/getImage?url=touxiang.png"/>
+            <img class="imgcss" src="/getAvatar?id=${Info.userId}"/>
         </div>
         <div class="conmment_details">
             <div style="float:left;">
-                <span class="comment_name">${Info.userId} </span>     <span>${Info.createTime}</span>
+                <span class="comment_name">${Info.userId} </span>
+                <span>${Info.createTime}</span>
             </div>
 
             <c:if  test="${Info.userId ==sessionScope.myInfo.id}">
-                <div class="del" id="delCom" onclick = "clickDel(this)" data-id = '${Info.id}' data-name = '${Info.userId}'>
+                <div class="del button-font" id="delCom" onclick = "clickDel(this)" data-id = '${Info.id}' data-name = '${Info.userId}'>
                     <a class="del_comment" data-id="1"> <i id = "del" class="icon layui-icon" > 删除</i> </a>
                 </div>
-            </c:if>>
+            </c:if>
 
             <div class="comment_content" > 
                     ${Info.context}
@@ -187,7 +187,6 @@
     <div class="comment_add_or_last" >
 
     </div>
-    <hr>
 
 </body>
 </html>

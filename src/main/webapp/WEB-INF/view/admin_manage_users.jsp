@@ -30,7 +30,7 @@
     </script>
 
     <script>
-        layui.use(['table','form'], function(){
+        layui.use('table', function(){
             var form = layui.form;
             form.render();
             var table = layui.table;
