@@ -74,6 +74,12 @@ public class MeController {
         return dataResult;
     }
 
+    @RequestMapping("/changePhotoName")
+    @ResponseBody
+    public DataResult changePhotoName(@RequestParam("name")String name,@RequestParam("photoId")String photoId){
+        return PhotoServer.changePhotoName(name,photoId);
+    }
+
     @RequestMapping("/uploadAvatar")
     @ResponseBody
     public DataResult uploadAvatar (@RequestParam("file") MultipartFile file,HttpSession session) throws Exception{

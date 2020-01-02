@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class statisticsDAO {
+public class StatisticsDAO {
     public static Map<String, Integer> getStatisticsAll(String userId){
         Map<String,Integer> statistics = new HashMap<>();
 

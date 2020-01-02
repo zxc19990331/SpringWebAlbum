@@ -25,5 +25,10 @@ public class PhotoDAO {
         return  JDBCDAO.insertOrDeleteOrUpdate(String.format("DELETE photo WHERE id = '%s'",photoId));
     }
 
+    //更改照片名称
+    public static boolean changePhotoName(String name,String photoId){
+        return JDBCDAO.insertOrDeleteOrUpdate(String.format("UPDATE photo SET name = '%s' WHERE id = '%s'",name,photoId));
+    }
+
 
 }

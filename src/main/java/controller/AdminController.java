@@ -79,7 +79,7 @@ public class AdminController {
 
     @RequestMapping("/debanAlbum")
     @ResponseBody
-    public DataResult debanAlbum(@RequestParam("albumId")String albumId,@RequestParam("note")String note,HttpSession session){
+    public DataResult debanAlbum(@RequestParam("albumId")String albumId,HttpSession session){
         User user = (User)session.getAttribute("myInfo");
         return OperationServer.debanAlbum(user.getId(),albumId,"");
     }

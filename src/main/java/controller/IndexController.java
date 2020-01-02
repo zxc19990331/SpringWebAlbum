@@ -85,6 +85,6 @@ public class IndexController {
 
         httpSession.invalidate();
         model.addAttribute("isLogin",false);
-        model.addAttribute("myInfo",new User());
+        model.addAttribute("myInfo",null);
     }
 }

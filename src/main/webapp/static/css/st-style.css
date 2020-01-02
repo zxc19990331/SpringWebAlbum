@@ -201,6 +201,14 @@ body{
     overflow: hidden;
 }
 
+.small-avatar{
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 .information-headimg-box {
     width: 150px;
     height: 150px;
@@ -456,4 +464,23 @@ body{
 
 .follow-item{
     margin-left: 10px;
+}
+
+.st-data{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.st-content{
+    color: #bbbbbb;
+    font-size: 16px;
+    margin: 0 auto;
+}
+
+.st-box{
+    width: 350px;
+    padding: 10px;
+    margin-right: 15px;
+    height: max-content;
 }

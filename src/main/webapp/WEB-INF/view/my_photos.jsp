@@ -88,7 +88,7 @@
             ,where:{albumId:albumId}
             ,cols: [[
                 {field:'id',  title: '照片ID', sort: true}
-                ,{field:'name',  title: '照片名',sort:true}
+                ,{field:'name',  title: '照片名',event :'name', sort:true}
                 ,{field: 'url', title: '预览',
                     templet: function(d){
                         var url = '/getImage?url=' + d.url;
@@ -177,7 +177,8 @@
 
 
                 });
-            }else if(obj.event === 'cover'){
+            }
+            else if(obj.event === 'cover'){
                 var albumId = $('#album_choose').val();
                 $.ajax({
                     url:"http://localhost:8080/setCover",
@@ -196,6 +197,37 @@
                         layer.msg("操作失败!");
                     }
                 })
+            }
+            else if(obj.event === 'name'){
+                layer.prompt({
+                    formType:0,
+                    title:'请重命名该照片',
+                    area:['400px','80px'],
+                    btnAlign:'c',
+                    offset:'auto'
+                },function(value,index,elem){
+                    var name = value;
+                    $.ajax({
+                        url: "http://localhost:8080/me/changePhotoName",
+                        type: "post",
+                        data: {"photoId": obj.data.id,"name": name},
+                        dataType: "json",
+                        offset:'auto',
+                        success: function (result) {
+                            //如果删除成功
+                            if (result.status == 0) {
+                                layer.msg('更改成功!', {icon: 6,offset:250});
+                                window.location.reload();
+                            } else {
+                                window.location.reload();
+                            }
+                        },
+                        error: function () {
+                            alert("更改发生异常");
+                        }
+                    });
+                    layer.close(index);
+                });
             }
         })
     });

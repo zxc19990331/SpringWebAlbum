@@ -54,6 +54,7 @@
     </div>
     <div id="albums" style="margin-top: 20px">
         <c:forEach var="album" items="${albumList}">
+            <c:if test="${album.albumState != 'banned'}">
             <div class="card-box">
                 <div class="card-image">
                         <%--到底传id还是直接传url好呢--%>
@@ -62,12 +63,41 @@
                 <div class="card-info">
                     <div class="card-info-title">${album.name}[${album.category}]</div>
                     <div class="card-info-type">${album.descp}</div>
+                    <div class="card-info-type"><i class="layui-icon layui-icon-praise" style="font-size: 14px; color: #bbbbbb;margin-right: 0"></i> ${album.praiseCount}</div>
                 </div>
                 <div class="card-item">
-                    <div class="card-info-type">上传者:${album.userId}</div>
-                    <div class="card-info-type">${album.createTime}</div>
+                    <a href="/user?id=${album.userId}">
+                    <div class="small-avatar">
+                        <img src="/getAvatar?id=${album.userId}" width="30px" height="30px"/>
+                    </div>
+                    </a>
+                    <div class="card-info-type" style="margin-bottom: 0">上传者:${album.userId}</div>
+                    <div class="card-info-type" style="margin-bottom: 0">${album.createTime}</div>
                 </div>
             </div>
+            </c:if>
+            <c:if test="${album.albumState == 'banned'}">
+                <div class="card-box layui-disabled">
+                    <div class="card-image">
+                            <%--到底传id还是直接传url好呢--%>
+                        <img class="fill-box" src="/getImage?url=${album.coverId}">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-info-title">${album.name}[${album.category}]</div>
+                        <div class="card-info-type">${album.descp}</div>
+                        <div class="card-info-type"><i class="layui-icon layui-icon-praise" style="font-size: 14px; color: #bbbbbb;margin-right: 0"></i> ${album.praiseCount}</div>
+                    </div>
+                    <div class="card-item">
+                        <a href="/user?id=${album.userId}">
+                            <div class="small-avatar">
+                                <img src="/getAvatar?id=${album.userId}" width="30px" height="30px"/>
+                            </div>
+                        </a>
+                        <div class="card-info-type" style="margin-bottom: 0">上传者:${album.userId}</div>
+                        <div class="card-info-type" style="margin-bottom: 0">${album.createTime}</div>
+                    </div>
+                </div>
+            </c:if>
         </c:forEach>
     </div>
 </div>

@@ -21,4 +21,9 @@ public class PhotoServer {
             return DataResult.fail("del photo fail");
         }
     }
+
+    public static DataResult changePhotoName(String name,String photoId){
+        boolean res = PhotoDAO.changePhotoName(name,photoId);
+        return res?DataResult.success("change name success",null):DataResult.fail("change name fail");
+    }
 }

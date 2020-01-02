@@ -9,6 +9,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>${album.name}|${album.category} -编辑相册</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/layui.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/st-style.css" type="text/css"/>
     <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
@@ -27,7 +28,7 @@
 <div class="st-banner" style="height: 150px"></div>
 <div class="home-information-box">
     <div class="information-headimg-box">
-        <img src="/getAvatar?id=${userInfo.id}" width="150px"/>
+        <img src="/getAvatar?id=${sessionScope.myInfo.id}" width="150px" height="150px"/>
     </div>
 </div>
 

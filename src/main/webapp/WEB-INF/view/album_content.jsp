@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>${albumInfo.name}|${albumInfo.category}</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/layui.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/st-style.css" type="text/css"/>
     <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
@@ -25,7 +25,7 @@
                     success: function (result) {
                         console.log(result.data);
                         if (result.status == 0) {
-                            layer.msg("点赞成功!");
+                            layer.msg("点赞成功!",{offset:250});
                             var praise = parseInt($("#praise_count").html());
                             $("#praise_count").html(praise + 1);
                             console.log(praise);
@@ -288,6 +288,9 @@
     </div>
     <hr>
     </c:forEach>
+    <c:if test="${commentInfo.size()==0}">
+        <div style="color: #bbbbbb;margin-left: 25px;margin-top:25px">暂时还没有评论哦!</div>
+    </c:if>
 
     <div class="comment_add_or_last" >
 

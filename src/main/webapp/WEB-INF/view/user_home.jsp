@@ -120,7 +120,7 @@
 <div style="background: white">
     <div class="home-information-box">
         <div class="information-headimg-box">
-            <img src="/getAvatar?id=${userInfo.id}" width="150px"/>
+            <img src="/getAvatar?id=${userInfo.id}" width="150px" height="150px"/>
         </div>
     </div>
 
@@ -144,9 +144,14 @@
                         </c:if>
                         </c:if>
 
-                <a href="/sendMessage?id=${albumInfo.userId}"></a>
-                <button type="button" class="layui-btn">私信</button>
+                <a href="/sendMessage?id=${albumInfo.userId}">
+                    <button type="button" class="layui-btn">私信</button>
+                </a>
             </div>
+        </c:if>
+        <c:if test="${userInfo.userState=='banned'}">
+            <i class="layui-icon layui-icon-tips" style="font-size: 18px; color: #bbbbbb;"></i>
+            <div style="font-size: 18px;color: #bbbbbb;">该用户已被封禁!</div>
         </c:if>
     </div>
 </div>
@@ -164,11 +169,20 @@
                 <%--是自己的页面才可以点创建相册--%>
                 <c:if test="${sessionScope.isLogin && sessionScope.myInfo.id == userInfo.id}">
                     <div class="" style="margin-top:20px;text-align: right">
-                        <a href="/createAlbum">
-                            <button type="button" class="layui-btn layui-btn-radius">创建相册</button>
-                        </a>
-                        <a href="/uploadPhoto"><button type="button" class="layui-btn layui-btn-radius">上传照片</button></a>
-
+                        <c:if test="${sessionScope.myInfo.userState!='banned'}">
+                            <a href="/createAlbum">
+                                <button type="button" class="layui-btn layui-btn-radius">创建相册</button>
+                            </a>
+                            <a href="/uploadPhoto"><button type="button" class="layui-btn layui-btn-radius">上传照片</button></a>
+                        </c:if>
+                        <c:if test="${sessionScope.myInfo.userState=='banned'}">
+                            <a title="您已被封禁!">
+                                <button type="button" class="layui-btn layui-btn-disabled" >创建相册</button>
+                            </a>
+                            <a title="您已被封禁!">
+                                <button type="button" class="layui-btn layui-btn-disabled">上传照片</button>
+                            </a>
+                        </c:if>
                     </div>
                 </c:if>
                 <div id="albums" style="margin-top: 20px">

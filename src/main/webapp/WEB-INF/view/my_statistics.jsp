@@ -21,16 +21,37 @@
     <jsp:include page="my_left_bar.jsp"></jsp:include>
     <div class="personal-content">
         <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-            <ul class="layui-tab-title" style="margin-left: 45px">
+            <ul class="layui-tab-title" style="">
                 <li class="layui-this">我的统计</li>
             </ul>
             <div class="layui-tab-content" style="">
                 <div class="layui-tab-item layui-show">
-                    <div>发布的相册数量  ${mystatis.albumCount}</div>
-                    <div>发布的评论数量 ${mystatis.commentCount}</div>
-                    <div>我关注的数量 ${mystatis.followCount}</div>
-                    <div>我被关注的数量 ${mystatis.followedCount}</div>
-                    <div>我的照片的数量 ${mystatis.photoCount}</div>
+                    <div class="horizentol">
+                        <div class="vertical st-box">
+                            <div class="st-data">${mystatis.albumCount}</div>
+                            <div class="st-content">发布的相册数量</div>
+                        </div>
+
+                        <div class="vertical st-box">
+                            <div class="st-data">${mystatis.commentCount}</div>
+                            <div class="st-content">发布的评论数量 </div>
+                        </div>
+
+                        <div class="vertical st-box">
+                            <div class="st-data">${mystatis.followCount}</div>
+                            <div class="st-content">我关注的数量</div>
+                        </div>
+
+                        <div class="vertical st-box">
+                            <div class="st-data">${mystatis.followedCount}</div>
+                            <div class="st-content">我被关注的数量</div>
+                        </div>
+
+                        <div class="vertical st-box">
+                            <div class="st-data">${mystatis.photoCount}</div>
+                            <div class="st-content">我的照片的数量</div>
+                        </div>
+                    </div>
             </div>
 
         </div>
