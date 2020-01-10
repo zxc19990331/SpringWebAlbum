@@ -1,12 +1,11 @@
 package server;
 
 import constant.Constant;
-import dao.OperationDAO;
 import dao.UserDAO;
 import entity.DataResult;
+import model.Statistics;
 import model.User;
 import org.springframework.web.multipart.MultipartFile;
-import util.DateHelper;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -102,5 +101,16 @@ public class UserServer {
         }else{
             return DataResult.fail("set user state fail");
         }
+    }
+
+    public static DataResult getStatistics(String userId){
+        DataResult dataResult = new DataResult();
+
+        Statistics statistics = new Statistics(UserDAO.getStatisticsAll(userId));
+
+        dataResult.setStatus(0);
+        dataResult.setData(statistics);
+
+        return dataResult;
     }
 }

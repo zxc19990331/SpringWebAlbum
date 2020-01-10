@@ -27,6 +27,7 @@ public class AlbumController {
     @ResponseBody
     public DataResult submitNewAlbum(@RequestParam("title")String title,@RequestParam("desc")String desc,
                                      @RequestParam("userId")String userId, @RequestParam("type")String category){
+        System.out.println("SUBMIT" + title + desc + userId + category);
         return AlbumServer.addNewAlbum(userId,title,desc,category);
     }
 

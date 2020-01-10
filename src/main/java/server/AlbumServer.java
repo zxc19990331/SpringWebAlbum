@@ -161,6 +161,7 @@ public class AlbumServer {
                 dataResult.setStatus(-1);
                 dataResult.setMsg("add new album error");
             }
+            System.out.println("ADD ALBUM " + dataResult.getMsg());
             return dataResult;
     }
 
