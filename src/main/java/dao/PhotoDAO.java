@@ -17,7 +17,7 @@ public class PhotoDAO {
 
     //仅删除store
     public static boolean delPhotoFromAlbum(String albumId,String photoId){
-        return JDBCDAO.insertOrDeleteOrUpdate(String.format("DELETE store WHERE photo_id = '%s', album_id = '%s'",photoId,albumId));
+        return JDBCDAO.insertOrDeleteOrUpdate(String.format("DELETE store WHERE photo_id = '%s'AND album_id = '%s'",photoId,albumId));
     }
 
     //删除photo和store

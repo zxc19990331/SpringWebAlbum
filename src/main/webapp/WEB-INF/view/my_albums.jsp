@@ -65,7 +65,7 @@
             });
             table.on('tool(album_table)',function (obj) {
                 if(obj.event === 'check'){
-                    var url = '/album?id=' + obj.data.id;
+                    var url = '/album?albumId=' + obj.data.id;
                     window.open(url,"_blank");
                 }
                 else if(obj.event === 'edit'){

@@ -104,8 +104,9 @@ public class MeController {
     }
 
     @RequestMapping("/mysta")
-    public String getStatistics(@RequestParam("id")String uId, Model model){
-        Statistics statistics =  (Statistics) StatisticsServer.getStatistics(uId).getData();
+    public String getStatistics(Model model,HttpSession session){
+        User user = (User)session.getAttribute("myInfo");
+        Statistics statistics =  (Statistics) StatisticsServer.getStatistics(user.getId()).getData();
         model.addAttribute("mystatis",statistics);
         return "my_statistics";
     }

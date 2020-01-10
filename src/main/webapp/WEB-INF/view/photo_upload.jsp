@@ -24,7 +24,7 @@
 <div class="st-banner" style="height: 150px"></div>
 <div class="home-information-box">
     <div class="information-headimg-box">
-        <img src="/getAvatar?id=${userInfo.id}" width="150px"/>
+        <img src="/getAvatar?id=${sessionScope.myInfo.id}" width="150px"/>
     </div>
 </div>
 
