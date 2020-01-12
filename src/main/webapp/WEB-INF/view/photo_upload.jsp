@@ -72,11 +72,11 @@
             upload.render({
                 elem: '#test2'
                 ,url: 'http://localhost:8080/upload'
+                ,data:{
+                    albumId: $('#album_choose').val()
+                }
                 ,multiple: true
                 ,field:'file'
-                <%--,data:{userId:'${sessionScope.myInfo.id}',--%>
-                    <%--albumId: $('#album_choose').val()--%>
-                    <%--}--%>
                 ,auto:false
                 ,bindAction:'#btn_submit'
                 ,choose:function (obj) {
@@ -85,7 +85,7 @@
                     });
                 }
                 ,before: function(obj){
-                    this.data = {userId:'${sessionScope.myInfo.id}',
+                    this.data = {
                         albumId: $('#album_choose').val()
                     };
                     this.url = 'http://localhost:8080/upload';
@@ -93,7 +93,7 @@
                 }
                 ,done: function(res){
                     //上传完毕
-                    if(res.status == 0){
+                    if(res.status === 0){
                         layer.msg("上传成功！");
                         window.location.href = "/album?albumId="+this.data.albumId;
                     }else{

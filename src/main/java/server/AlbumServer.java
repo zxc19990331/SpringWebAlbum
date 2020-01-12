@@ -21,7 +21,6 @@ public class AlbumServer {
         if(!isUserValid(userId,albumId)){
             return DataResult.fail("相册操作权限不合法");
         }
-//        TODO:服务器存储图片的文件夹进行合理的分层，我想有生之年也不会做这种优化了
         Album album = (Album) getAlbumInfoById(albumId).getData();
         for(MultipartFile file:files){
             String rawName = file.getOriginalFilename();
@@ -84,7 +83,6 @@ public class AlbumServer {
     }
 
 
-    //TODO 太乱了 要改
     public static DataResult getPhotoInfoListByAlbumId(String albumId,String order){
        DataResult dataResult = new DataResult();
        if(!checkAlbumExist(albumId)){

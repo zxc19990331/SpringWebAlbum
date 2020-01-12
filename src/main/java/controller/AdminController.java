@@ -1,5 +1,6 @@
 package controller;
 
+import constant.Constant;
 import entity.DataResult;
 import model.Operation;
 import model.User;
@@ -22,7 +23,7 @@ public class AdminController {
     public String enterUsers(Model model, HttpSession session){
         User user = (User)session.getAttribute("myInfo");
         model.addAttribute("myInfo",user);
-        return "admin_manage_users";
+        return user.isAdmin()?"admin_manage_users":"permission_denied";
     }
 
     @RequestMapping("/getUserList")
@@ -33,8 +34,10 @@ public class AdminController {
     }
 
     @RequestMapping("/operations")
-    public String enterOperations(){
-        return "admin_operations";
+    public String enterOperations(Model model, HttpSession session){
+        User user = (User)session.getAttribute("myInfo");
+        model.addAttribute("myInfo",user);
+        return user.isAdmin()?"admin_operations":"permission_denied";
     }
 
     @RequestMapping("/getOperationList")
@@ -45,8 +48,10 @@ public class AdminController {
     }
 
     @RequestMapping("/albums")
-    public String enterAlbums(){
-        return "admin_manage_albums";
+    public String enterAlbums(Model model, HttpSession session){
+        User user = (User)session.getAttribute("myInfo");
+        model.addAttribute("myInfo",user);
+        return user.isAdmin()?"admin_manage_albums":"permission_denied";
     }
 
     @RequestMapping("/getAlbumList")

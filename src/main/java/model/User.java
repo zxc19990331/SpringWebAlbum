@@ -81,4 +81,8 @@ public class User {
     public void setUserState(String userState) {
         this.userState = userState;
     }
+
+    public boolean isAdmin(){
+        return this.type.equals(Constant.ADMIN);
+    }
 }

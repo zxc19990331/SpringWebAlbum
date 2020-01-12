@@ -4,13 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Constant {
-    //至尊nb
     public static final String IMAGE_PATH = "E:\\study-软件工程\\web_album_rep";
     public static final String USER_ID = "id";
     public static final String USER_NAME = "name";
     public static final String PASSWORD = "password";
     public static final String USER_STATE = "user_state";
     public static final String TYPE = "type";
+
+    public static final String ADMIN = "admin";
+    public static final String USER = "user";
 
     public static final String ALB_NAME = "album_name";
     public static final String ALB_ID = "id";
